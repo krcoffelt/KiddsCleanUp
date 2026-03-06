@@ -42,7 +42,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="ml-3 inline-flex items-center px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-md transition-colors"
+              className="premium-cta ml-3 inline-flex items-center px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-md transition-colors"
             >
               Request Quote
             </Link>
@@ -88,7 +88,7 @@ export default function Header() {
             </a>
             <Link
               href="/contact"
-              className="mt-2 block mx-3 text-center px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-md transition-colors"
+              className="premium-cta mt-2 block mx-3 text-center px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-md transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               Request Quote

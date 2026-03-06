@@ -75,7 +75,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
+              className="premium-cta inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Free Quote
             </Link>
@@ -251,16 +251,9 @@ function ProjectGallerySection() {
     <section className="py-16 sm:py-24 bg-primary-dark text-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
-          <p className="inline-flex items-center rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-sm font-semibold text-accent mb-5">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white">
             Recent Work
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Real Photos From Real Cleanup and Demolition Jobs
           </h2>
-          <p className="text-white/75 text-lg leading-relaxed">
-            These are the kinds of projects we handle every week across the KC metro:
-            hard cleanup work, careful demolition, and job sites left ready for what&apos;s next.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">

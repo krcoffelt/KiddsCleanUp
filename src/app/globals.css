@@ -51,3 +51,43 @@ html {
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+.premium-cta {
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 42%),
+    linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.22) 48%, rgba(255, 255, 255, 0) 62%);
+  background-size: 100% 100%, 220% 100%;
+  background-position: 0 0, 160% 0;
+  box-shadow: 0 12px 28px rgba(13, 33, 55, 0.18);
+  transition:
+    transform 180ms ease,
+    box-shadow 220ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    background-position 420ms ease;
+  will-change: transform, box-shadow, background-position;
+}
+
+.premium-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(13, 33, 55, 0.24);
+  background-position: 0 0, -40% 0;
+}
+
+.premium-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 22px rgba(13, 33, 55, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-cta {
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .premium-cta:hover,
+  .premium-cta:active {
+    transform: none;
+    box-shadow: 0 12px 28px rgba(13, 33, 55, 0.18);
+    background-position: 0 0, 160% 0;
+  }
+}

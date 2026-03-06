@@ -254,7 +254,7 @@ export default function QuoteForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-md bg-accent hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed px-8 py-4 text-lg font-bold text-primary-dark transition-colors"
+        className="premium-cta w-full rounded-md bg-accent hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed px-8 py-4 text-lg font-bold text-primary-dark transition-colors"
       >
         {submitting ? "Submitting..." : "Request a Free Quote"}
       </button>
