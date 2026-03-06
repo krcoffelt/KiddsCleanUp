@@ -8,48 +8,36 @@ const PROJECT_PHOTOS = [
   {
     src: "/images/photo-1.png",
     alt: "Cleanup and demolition job site from Kidds Clean Up",
-    title: "Real Job Sites",
-    copy: "Work completed by our crew across the Kansas City metro.",
     className: "md:col-span-7 md:row-span-2 min-h-[320px] md:min-h-[520px]",
     sizes: "(min-width: 768px) 58vw, 100vw",
   },
   {
     src: "/images/photo-2.png",
     alt: "Project photo showing Kidds Clean Up on-site work",
-    title: "Owner-Operated",
-    copy: "The same team you hire is the team doing the work.",
     className: "md:col-span-5 min-h-[260px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-3.png",
     alt: "Cleanup project example from Kidds Clean Up",
-    title: "Clean Finish",
-    copy: "Sites left safer, cleaner, and ready for what comes next.",
     className: "md:col-span-5 min-h-[260px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-4.png",
     alt: "Demolition and cleanup work completed by Kidds Clean Up",
-    title: "Hands-On Work",
-    copy: "Residential, commercial, and specialty cleanup projects.",
     className: "md:col-span-4 min-h-[240px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-5.png",
     alt: "Kansas City cleanup and demolition project by Kidds Clean Up",
-    title: "KC Metro Projects",
-    copy: "Local work backed by honest estimates and dependable follow-through.",
     className: "md:col-span-4 min-h-[240px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-6.png",
     alt: "Example of a Kidds Clean Up project site",
-    title: "Built for Tough Jobs",
-    copy: "Crews, dumpsters, and equipment ready to handle the full scope.",
     className: "md:col-span-4 min-h-[240px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
@@ -251,9 +239,12 @@ function ProjectGallerySection() {
     <section className="py-16 sm:py-24 bg-primary-dark text-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Recent Work
           </h2>
+          <p className="text-white/75 max-w-2xl">
+            A few examples of the cleanup and demolition work we do across the KC metro.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
@@ -271,14 +262,6 @@ function ProjectGallerySection() {
                   className="object-cover transition-transform duration-500 hover:scale-[1.02]"
                 />
               </div>
-              <figcaption className="border-t border-white/10 bg-primary-dark px-5 py-4 sm:px-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent/90">
-                  {photo.title}
-                </p>
-                <p className="mt-2 max-w-sm text-sm sm:text-base text-white/80 leading-relaxed">
-                  {photo.copy}
-                </p>
-              </figcaption>
             </figure>
           ))}
         </div>
