@@ -8,37 +8,37 @@ const PROJECT_PHOTOS = [
   {
     src: "/images/photo-1.png",
     alt: "Cleanup and demolition job site from Kidds Clean Up",
-    className: "md:col-span-7 md:row-span-2 min-h-[320px] md:min-h-[520px]",
+    className: "md:col-span-7 md:row-span-2 min-h-[260px] md:min-h-[520px]",
     sizes: "(min-width: 768px) 58vw, 100vw",
   },
   {
     src: "/images/photo-2.png",
     alt: "Project photo showing Kidds Clean Up on-site work",
-    className: "md:col-span-5 min-h-[260px]",
+    className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-3.png",
     alt: "Cleanup project example from Kidds Clean Up",
-    className: "md:col-span-5 min-h-[260px]",
+    className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-4.png",
     alt: "Demolition and cleanup work completed by Kidds Clean Up",
-    className: "md:col-span-4 min-h-[240px]",
+    className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-5.png",
     alt: "Kansas City cleanup and demolition project by Kidds Clean Up",
-    className: "md:col-span-4 min-h-[240px]",
+    className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-6.png",
     alt: "Example of a Kidds Clean Up project site",
-    className: "md:col-span-4 min-h-[240px]",
+    className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
 ];
@@ -47,12 +47,12 @@ function HeroSection() {
   return (
     <section className="relative bg-primary-dark text-white overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(30,58,95,0.95),rgba(15,39,68,0.98))]" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-28 lg:py-36">
         <div className="max-w-3xl">
-          <p className="inline-block rounded-full bg-accent/20 text-white px-4 py-1.5 text-sm font-semibold mb-6">
+          <p className="inline-block rounded-full bg-accent/20 text-white px-3 py-1.5 text-xs sm:px-4 sm:text-sm font-semibold mb-5 leading-tight">
             Family-Owned &middot; Owner-Operated &middot; Since {COMPANY.since}
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-5">
             Kansas City&apos;s Trusted
             <span className="text-accent"> Cleanup &amp; Demolition</span> Team
           </h1>
@@ -63,13 +63,13 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="premium-cta inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
+              className="premium-cta inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Free Quote
             </Link>
             <a
               href={COMPANY.phoneTel}
-              className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
+              className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -77,7 +77,7 @@ function HeroSection() {
               {COMPANY.phone}
             </a>
           </div>
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-white/90">
+          <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-3 min-[520px]:grid-cols-2 xl:grid-cols-4 text-white/90">
             <div className="flex items-center gap-3">
               <svg className="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.079-1.102a1.44 1.44 0 00-.148-.643l-2.37-4.305A2.25 2.25 0 0016.764 11.25H14.25m3 7.5H9.75m5.25-12.75v4.5m0 0H3.375m11.625 0L12.375 3.375" />
@@ -236,7 +236,7 @@ function TrustSection() {
 
 function ProjectGallerySection() {
   return (
-    <section className="py-16 sm:py-24 bg-primary-dark text-white overflow-hidden">
+    <section className="py-14 sm:py-24 bg-primary-dark text-white overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -247,13 +247,13 @@ function ProjectGallerySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 auto-rows-fr">
           {PROJECT_PHOTOS.map((photo) => (
             <figure
               key={photo.src}
-              className={`flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 ${photo.className}`}
+              className={`flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/5 ${photo.className}`}
             >
-              <div className="relative flex-1 min-h-[220px]">
+              <div className="relative flex-1 min-h-[180px] sm:min-h-[220px]">
                 <Image
                   src={photo.src}
                   alt={photo.alt}
