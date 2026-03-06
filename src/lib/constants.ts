@@ -1,0 +1,55 @@
+export const COMPANY = {
+  name: "Kidds Clean Up And Demolition",
+  shortName: "Kidds Clean Up",
+  phone: "816-457-4363",
+  phoneTel: "tel:+18164574363",
+  emails: ["Chris@kiddscleanup.com", "Kiddscleanup@gmail.com"],
+  hours: "Everyday 8AM - 6PM",
+  area: "Kansas City Metro",
+  since: "April 2017",
+  address: "Kansas City, MO",
+} as const;
+
+export const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Residential", href: "/services/residential" },
+  { label: "Commercial", href: "/services/commercial" },
+  { label: "Lead-Safe", href: "/services/lead-safe" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+export const SERVICE_TYPES = [
+  "Residential Cleanup",
+  "Residential Demolition",
+  "Commercial Cleanup",
+  "Commercial Demolition",
+  "Lead-Safe Removal",
+  "Lead-Safe Demolition",
+  "Other",
+] as const;
+
+export const BUDGET_RANGES = [
+  "Under $1,000",
+  "$1,000 - $5,000",
+  "$5,000 - $10,000",
+  "$10,000 - $25,000",
+  "$25,000+",
+  "Not Sure",
+] as const;
+
+export const REFERRAL_SOURCES = [
+  "Google Search",
+  "Social Media",
+  "Referral / Word of Mouth",
+  "Repeat Customer",
+  "Other",
+] as const;
+
+export const ANALYTICS_EVENTS = {
+  CTA_CALL_CLICK: "cta_call_click",
+  CTA_REQUEST_QUOTE_CLICK: "cta_request_quote_click",
+  SERVICE_PAGE_VIEW: "service_page_view",
+  FORM_SUBMIT_SUCCESS: "form_submit_success",
+  FORM_SUBMIT_ERROR: "form_submit_error",
+} as const;
