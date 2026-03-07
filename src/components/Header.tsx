@@ -11,14 +11,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-primary-dark/95 backdrop-blur-sm shadow-lg">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 min-h-[4.5rem]">
+        <div className="flex items-center justify-between h-20 min-h-[5rem]">
           <Link href="/" className="inline-flex items-center">
             <Image
               src="/images/KiddsCleanUpLogo_ExtraLong.png"
               alt={`${COMPANY.name} logo`}
               width={1200}
               height={200}
-              className="h-7 sm:h-9 w-auto max-w-[220px] sm:max-w-none"
+              className="h-8 sm:h-10 w-auto max-w-[250px] sm:max-w-none"
               priority
             />
           </Link>
