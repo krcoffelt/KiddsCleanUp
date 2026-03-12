@@ -78,7 +78,7 @@ function HeroSection() {
             </a>
           </div>
         </div>
-        <div className="mt-7 grid max-w-5xl grid-cols-1 gap-x-6 gap-y-2.5 min-[520px]:grid-cols-2 md:grid-cols-4 text-white/90">
+        <div className="mt-7 flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-2.5 text-white/90">
             <div className="flex items-center gap-2.5 whitespace-nowrap">
               <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.079-1.102a1.44 1.44 0 00-.148-.643l-2.37-4.305A2.25 2.25 0 0016.764 11.25H14.25m3 7.5H9.75m5.25-12.75v4.5m0 0H3.375m11.625 0L12.375 3.375" />
