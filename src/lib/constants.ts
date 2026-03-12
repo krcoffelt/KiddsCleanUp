@@ -29,15 +29,6 @@ export const SERVICE_TYPES = [
   "Other",
 ] as const;
 
-export const BUDGET_RANGES = [
-  "Under $1,000",
-  "$1,000 - $5,000",
-  "$5,000 - $10,000",
-  "$10,000 - $25,000",
-  "$25,000+",
-  "Not Sure",
-] as const;
-
 export const REFERRAL_SOURCES = [
   "Google Search",
   "Social Media",

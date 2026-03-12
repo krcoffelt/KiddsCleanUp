@@ -7,7 +7,6 @@ export interface LeadFormData {
   project_details: string;
   preferred_date: string;
   preferred_time: string;
-  budget_range: string;
   referral_source: string;
 }
 

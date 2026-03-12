@@ -89,7 +89,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
       project_details: String(body.project_details ?? "").trim(),
       preferred_date: String(body.preferred_date ?? "").trim(),
       preferred_time: String(body.preferred_time ?? "").trim(),
-      budget_range: String(body.budget_range ?? "").trim(),
       referral_source: String(body.referral_source ?? "").trim(),
     };
 

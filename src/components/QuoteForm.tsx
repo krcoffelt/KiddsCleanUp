@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { SERVICE_TYPES, BUDGET_RANGES, REFERRAL_SOURCES } from "@/lib/constants";
+import { SERVICE_TYPES, REFERRAL_SOURCES } from "@/lib/constants";
 import type { LeadFormData, QuoteResponse } from "@/lib/types";
 
 export default function QuoteForm() {
@@ -35,7 +35,6 @@ export default function QuoteForm() {
       project_details: (fd.get("project_details") as string) ?? "",
       preferred_date: (fd.get("preferred_date") as string) ?? "",
       preferred_time: (fd.get("preferred_time") as string) ?? "",
-      budget_range: (fd.get("budget_range") as string) ?? "",
       referral_source: (fd.get("referral_source") as string) ?? "",
     };
 
@@ -215,25 +214,8 @@ export default function QuoteForm() {
         </div>
       </div>
 
-      {/* Budget Range & Referral */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="budget_range" className="block text-sm font-medium mb-1.5">
-            Budget Range
-          </label>
-          <select
-            id="budget_range"
-            name="budget_range"
-            className={inputClass("budget_range")}
-            defaultValue=""
-          >
-            <option value="">Select range...</option>
-            {BUDGET_RANGES.map((b) => (
-              <option key={b} value={b}>{b}</option>
-            ))}
-          </select>
-        </div>
-        <div>
+      {/* Referral */}
+      <div>
           <label htmlFor="referral_source" className="block text-sm font-medium mb-1.5">
             How did you hear about us?
           </label>
@@ -248,7 +230,6 @@ export default function QuoteForm() {
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
-        </div>
       </div>
 
       <button
