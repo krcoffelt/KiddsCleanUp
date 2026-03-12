@@ -3,7 +3,7 @@ export const COMPANY = {
   shortName: "Kidds Clean Up",
   phone: "816-457-4363",
   phoneTel: "tel:+18164574363",
-  emails: ["Chris@kiddscleanup.com", "Kiddscleanup@gmail.com"],
+  emails: ["Chris@kiddscleanup.com"],
   hours: "Everyday 8AM - 6PM",
   area: "Kansas City Metro",
   since: "April 2017",
@@ -26,6 +26,7 @@ export const SERVICE_TYPES = [
   "Commercial Demolition",
   "Lead-Safe Removal",
   "Lead-Safe Demolition",
+  "Water Mitigation",
   "Other",
 ] as const;
 
@@ -35,6 +36,25 @@ export const REFERRAL_SOURCES = [
   "Referral / Word of Mouth",
   "Repeat Customer",
   "Other",
+] as const;
+
+export const SERVICE_AREA_CITIES = [
+  "Kansas City, MO",
+  "Kansas City, KS",
+  "Overland Park",
+  "Olathe",
+  "Shawnee",
+  "Lenexa",
+  "Leawood",
+  "Prairie Village",
+  "Mission",
+  "Lee's Summit",
+  "Independence",
+  "Blue Springs",
+  "Raytown",
+  "Liberty",
+  "Belton",
+  "Grandview",
 ] as const;
 
 export const ANALYTICS_EVENTS = {

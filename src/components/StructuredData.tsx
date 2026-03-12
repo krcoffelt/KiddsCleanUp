@@ -1,4 +1,4 @@
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
 
 export function LocalBusinessSchema() {
   const schema = {
@@ -6,19 +6,14 @@ export function LocalBusinessSchema() {
     "@type": "LocalBusiness",
     name: COMPANY.name,
     description:
-      "Family-owned cleanup and demolition company serving the Kansas City metro area. Residential and commercial cleanup, demolition, and lead-safe services.",
+      "Family-owned cleanup and demolition company serving the Kansas City metro area. Residential and commercial cleanup, demolition, lead-safe services, and water mitigation.",
     telephone: "+1-816-457-4363",
     email: COMPANY.emails[0],
     url: "https://kiddscleanup.com",
-    areaServed: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 39.0997,
-        longitude: -94.5786,
-      },
-      geoRadius: "80467",
-    },
+    areaServed: SERVICE_AREA_CITIES.map((city) => ({
+      "@type": "City",
+      name: city,
+    })),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kansas City",
@@ -34,6 +29,7 @@ export function LocalBusinessSchema() {
       "Residential Demolition",
       "Commercial Demolition",
       "Lead-Safe Removal",
+      "Water Mitigation",
     ],
   };
 

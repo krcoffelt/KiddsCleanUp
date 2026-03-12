@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ServiceCard from "@/components/ServiceCard";
 import TrustBadge from "@/components/TrustBadge";
-import { COMPANY } from "@/lib/constants";
+import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
 
 const PROJECT_PHOTOS = [
   {
@@ -119,11 +119,11 @@ function ServicesSection() {
             Our Services
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            From residential cleanouts to large-scale commercial demolition, we
-            handle it all with the same commitment to quality and safety.
+            From residential cleanouts to emergency water mitigation, we handle
+            every job with the same commitment to quality and safety.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           <ServiceCard
             title="Residential Services"
             description="Complete home cleanouts, garage and shed demolition, deck removal, interior demolition, and property cleanup for homeowners across the KC metro."
@@ -151,6 +151,16 @@ function ServicesSection() {
             icon={
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+            }
+          />
+          <ServiceCard
+            title="Water Mitigation"
+            description="Fast response for burst pipes, flooding, leaks, and water damage with extraction, drying, and moisture control."
+            href="/services/water-mitigation"
+            icon={
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3.75c-2.94 3.31-6 7.029-6 10.5a6 6 0 0012 0c0-3.471-3.06-7.19-6-10.5z" />
               </svg>
             }
           />
@@ -270,6 +280,37 @@ function ProjectGallerySection() {
   );
 }
 
+function ServiceAreaSection() {
+  return (
+    <section className="py-16 sm:py-24 bg-surface">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">
+              Proudly Serving the KC Metro
+            </h2>
+            <p className="text-foreground/70 max-w-xl leading-relaxed">
+              We work throughout the Kansas City metro for cleanup, demolition,
+              lead-safe work, and water mitigation. If you&apos;re nearby and do
+              not see your city listed, contact us. We may still be able to help.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {SERVICE_AREA_CITIES.map((city) => (
+              <span
+                key={city}
+                className="rounded-full border border-surface-dark bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm"
+              >
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -277,6 +318,7 @@ export default function HomePage() {
       <ServicesSection />
       <ProjectGallerySection />
       <TrustSection />
+      <ServiceAreaSection />
     </>
   );
 }
