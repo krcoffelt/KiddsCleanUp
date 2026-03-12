@@ -78,31 +78,31 @@ function HeroSection() {
             </a>
           </div>
         </div>
-        <div className="mt-8 grid max-w-6xl grid-cols-1 gap-x-8 gap-y-3 min-[520px]:grid-cols-2 md:grid-cols-4 text-white/90">
-            <div className="flex items-center gap-3 whitespace-nowrap">
-              <svg className="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <div className="mt-7 grid max-w-5xl grid-cols-1 gap-x-6 gap-y-2.5 min-[520px]:grid-cols-2 md:grid-cols-4 text-white/90">
+            <div className="flex items-center gap-2.5 whitespace-nowrap">
+              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.079-1.102a1.44 1.44 0 00-.148-.643l-2.37-4.305A2.25 2.25 0 0016.764 11.25H14.25m3 7.5H9.75m5.25-12.75v4.5m0 0H3.375m11.625 0L12.375 3.375" />
               </svg>
-              <span className="text-sm font-medium sm:text-base">Own Dumpsters</span>
+              <span className="text-[0.95rem] font-medium sm:text-sm">Own Dumpsters</span>
             </div>
-            <div className="flex items-center gap-3 whitespace-nowrap">
-              <svg className="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex items-center gap-2.5 whitespace-nowrap">
+              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <span className="text-sm font-medium sm:text-base">Lead Certified</span>
+              <span className="text-[0.95rem] font-medium sm:text-sm">Lead Certified</span>
             </div>
-            <div className="flex items-center gap-3 whitespace-nowrap">
-              <svg className="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex items-center gap-2.5 whitespace-nowrap">
+              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2.25m5.25-2.25a9.75 9.75 0 11-19.5 0 9.75 9.75 0 0119.5 0z" />
               </svg>
-              <span className="text-sm font-medium sm:text-base">{COMPANY.hours}</span>
+              <span className="text-[0.95rem] font-medium sm:text-sm">{COMPANY.hours}</span>
             </div>
-            <div className="flex items-center gap-3 whitespace-nowrap">
-              <svg className="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex items-center gap-2.5 whitespace-nowrap">
+              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
               </svg>
-              <span className="text-sm font-medium sm:text-base">{COMPANY.area}</span>
+              <span className="text-[0.95rem] font-medium sm:text-sm">{COMPANY.area}</span>
             </div>
         </div>
       </div>
@@ -299,7 +299,7 @@ function ServiceAreaSection() {
             {SERVICE_AREA_CITIES.map((city) => (
               <span
                 key={city}
-                className="rounded-full border border-surface-dark bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm"
+                className="rounded-full border border-surface-dark bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-white"
               >
                 {city}
               </span>
