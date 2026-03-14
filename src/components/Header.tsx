@@ -7,6 +7,7 @@ import { COMPANY, NAV_LINKS } from "@/lib/constants";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerLinks = NAV_LINKS.filter((link) => link.href !== "/");
 
   return (
     <header className="sticky top-0 z-50 bg-primary-dark/95 backdrop-blur-sm shadow-lg">
@@ -25,7 +26,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
+            {headerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -69,7 +70,7 @@ export default function Header() {
         {/* Mobile nav */}
         {mobileOpen && (
           <div className="md:hidden border-t border-white/10 pb-4">
-            {NAV_LINKS.map((link) => (
+            {headerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
