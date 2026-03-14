@@ -133,13 +133,12 @@ export default function QuoteForm() {
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium mb-1.5">
-          Email <span className="text-error">*</span>
+          Email
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          required
           maxLength={254}
           className={inputClass("email")}
           placeholder="john@example.com"
@@ -150,17 +149,16 @@ export default function QuoteForm() {
       {/* Service Type */}
       <div>
         <label htmlFor="service_type" className="block text-sm font-medium mb-1.5">
-          Service Type <span className="text-error">*</span>
+          Service Type
         </label>
         <select
           id="service_type"
           name="service_type"
-          required
           className={inputClass("service_type")}
           defaultValue=""
         >
-          <option value="" disabled>
-            Select a service...
+          <option value="">
+            Select a service (optional)
           </option>
           {SERVICE_TYPES.map((s) => (
             <option key={s} value={s}>{s}</option>

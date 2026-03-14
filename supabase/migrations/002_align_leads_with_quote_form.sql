@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS public.leads (
     CHECK (status IN ('new', 'contacted', 'quoted', 'won', 'lost', 'spam')),
   full_name text NOT NULL CHECK (char_length(full_name) BETWEEN 2 AND 100),
   phone text NOT NULL CHECK (char_length(phone) BETWEEN 7 AND 20),
-  email text NOT NULL CHECK (char_length(email) <= 254),
-  service_type text NOT NULL
+  email text CHECK (email IS NULL OR char_length(email) <= 254),
+  service_type text
     CONSTRAINT leads_service_type_allowed_check
-    CHECK (service_type IN (
+    CHECK (service_type IS NULL OR service_type IN (
       'Junk Removal',
       'Commercial Demo',
       'Residential Demo',
@@ -44,8 +44,12 @@ ALTER TABLE public.leads
   DROP CONSTRAINT IF EXISTS leads_service_type_allowed_check;
 
 ALTER TABLE public.leads
+  ALTER COLUMN email DROP NOT NULL,
+  ALTER COLUMN service_type DROP NOT NULL;
+
+ALTER TABLE public.leads
   ADD CONSTRAINT leads_service_type_allowed_check
-  CHECK (service_type IN (
+  CHECK (service_type IS NULL OR service_type IN (
     'Junk Removal',
     'Commercial Demo',
     'Residential Demo',

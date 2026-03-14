@@ -45,7 +45,9 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     return;
   }
 
-  const subject = `New Quote Request: ${data.service_type} - ${data.full_name}`;
+  const serviceType = data.service_type || "Not specified";
+  const customerEmail = data.email || "No email provided.";
+  const subject = `New Quote Request: ${serviceType} - ${data.full_name}`;
   const details = data.project_details || "No project details provided.";
   const address = data.project_address || "No project address provided.";
   const preferredDate = data.preferred_date || "No preferred date provided.";
@@ -57,8 +59,8 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     `Lead ID: ${leadId}`,
     `Name: ${data.full_name}`,
     `Phone: ${data.phone}`,
-    `Email: ${data.email}`,
-    `Service: ${data.service_type}`,
+    `Email: ${customerEmail}`,
+    `Service: ${serviceType}`,
     `Project Address: ${address}`,
     `Preferred Date: ${preferredDate}`,
     `Preferred Time: ${preferredTime}`,
@@ -72,8 +74,8 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     <p><strong>Lead ID:</strong> ${escapeHtml(leadId)}</p>
     <p><strong>Name:</strong> ${escapeHtml(data.full_name)}</p>
     <p><strong>Phone:</strong> ${escapeHtml(data.phone)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
-    <p><strong>Service:</strong> ${escapeHtml(data.service_type)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(customerEmail)}</p>
+    <p><strong>Service:</strong> ${escapeHtml(serviceType)}</p>
     <p><strong>Project Address:</strong> ${escapeHtml(address)}</p>
     <p><strong>Preferred Date:</strong> ${escapeHtml(preferredDate)}</p>
     <p><strong>Preferred Time:</strong> ${escapeHtml(preferredTime)}</p>
@@ -90,10 +92,10 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     body: JSON.stringify({
       from,
       to: [to],
-      reply_to: data.email,
       subject,
       text,
       html,
+      ...(data.email ? { reply_to: data.email } : {}),
     }),
   });
 
@@ -118,15 +120,16 @@ function validateForm(data: LeadFormData): Record<string, string> {
     errors.phone = "Phone number is too long.";
   }
 
-  if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     errors.email = "A valid email address is required.";
   } else if (data.email.length > 254) {
     errors.email = "Email address is too long.";
   }
 
-  if (!data.service_type || data.service_type.trim().length === 0) {
-    errors.service_type = "Please select a service type.";
-  } else if (!ALLOWED_SERVICE_TYPES.includes(data.service_type as (typeof ALLOWED_SERVICE_TYPES)[number])) {
+  if (
+    data.service_type &&
+    !ALLOWED_SERVICE_TYPES.includes(data.service_type as (typeof ALLOWED_SERVICE_TYPES)[number])
+  ) {
     errors.service_type = "Please select a valid service type.";
   }
 
@@ -187,6 +190,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
       .from("leads")
       .insert({
         ...data,
+        email: data.email || null,
+        service_type: data.service_type || null,
         status: "new",
         source_page: request.headers.get("referer") || "",
         ip_hash: hashValue(ip),

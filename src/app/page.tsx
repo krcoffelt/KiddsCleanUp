@@ -76,6 +76,15 @@ function HeroSection() {
               </svg>
               {COMPANY.phone}
             </a>
+            <a
+              href={COMPANY.textTel}
+              className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
+            >
+              <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75h6.75m-6.75 3h4.5M21 12c0 4.97-4.701 9-10.5 9a11.76 11.76 0 01-4.226-.777L3 21l1.126-3.005A8.963 8.963 0 013 12c0-4.97 4.701-9 10.5-9S24 7.03 24 12z" />
+              </svg>
+              Text Us 24/7
+            </a>
           </div>
         </div>
         <div className="mt-7 grid max-w-4xl grid-cols-2 gap-x-4 gap-y-2.5 text-white/90 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8">

@@ -39,6 +39,12 @@ export default function Footer() {
             >
               Call {COMPANY.phone}
             </a>
+            <a
+              href={COMPANY.textTel}
+              className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
+            >
+              Text Us 24/7
+            </a>
           </div>
         </div>
       </div>

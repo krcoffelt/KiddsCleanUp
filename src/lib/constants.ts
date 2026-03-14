@@ -3,6 +3,7 @@ export const COMPANY = {
   shortName: "Kidds Clean Up",
   phone: "816-457-4363",
   phoneTel: "tel:+18164574363",
+  textTel: "sms:+18164574363",
   emails: ["Chris@kiddscleanup.com"],
   hours: "Everyday 8AM - 6PM",
   area: "Kansas City Metro",
