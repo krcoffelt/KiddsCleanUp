@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FocusEvent, type FormEvent, type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import { SERVICE_TYPES } from "@/lib/constants";
 import type { LeadFormData, QuoteResponse } from "@/lib/types";
@@ -66,6 +66,20 @@ export default function QuoteForm() {
     return fieldErrors[field]
       ? `${base} border-error`
       : `${base} border-surface-dark`;
+  }
+
+  function openNativePicker(
+    event: FocusEvent<HTMLInputElement> | MouseEvent<HTMLInputElement>
+  ) {
+    const input = event.currentTarget as HTMLInputElement & {
+      showPicker?: () => void;
+    };
+
+    try {
+      input.showPicker?.();
+    } catch {
+      // Browsers without showPicker() fall back to their default input behavior.
+    }
   }
 
   return (
@@ -197,7 +211,9 @@ export default function QuoteForm() {
             type="date"
             id="preferred_date"
             name="preferred_date"
-            className={inputClass("preferred_date")}
+            className={`${inputClass("preferred_date")} cursor-pointer`}
+            onClick={openNativePicker}
+            onFocus={openNativePicker}
           />
         </div>
         <div>
@@ -208,7 +224,10 @@ export default function QuoteForm() {
             type="time"
             id="preferred_time"
             name="preferred_time"
-            className={inputClass("preferred_time")}
+            className={`${inputClass("preferred_time")} cursor-pointer`}
+            step={1800}
+            onClick={openNativePicker}
+            onFocus={openNativePicker}
           />
         </div>
       </div>

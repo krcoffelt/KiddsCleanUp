@@ -23,7 +23,7 @@ export const SERVICE_TYPES = [
   "Junk Removal",
   "Commercial Demo",
   "Residential Demo",
-  "Lead Demo",
+  "Lead Remediation",
   "Water Mitigation",
 ];
 
@@ -31,7 +31,7 @@ export const ALLOWED_SERVICE_TYPES = [
   "Junk Removal",
   "Commercial Demo",
   "Residential Demo",
-  "Lead Demo",
+  "Lead Remediation",
   "Water Mitigation",
 ] as const;
 

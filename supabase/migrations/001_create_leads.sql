@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.leads (
       'Junk Removal',
       'Commercial Demo',
       'Residential Demo',
-      'Lead Demo',
+      'Lead Remediation',
       'Water Mitigation'
     )),
   project_address text CHECK (char_length(project_address) <= 300),

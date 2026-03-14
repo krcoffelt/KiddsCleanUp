@@ -78,31 +78,31 @@ function HeroSection() {
             </a>
           </div>
         </div>
-        <div className="mt-7 flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-2.5 text-white/90">
-            <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <div className="mt-7 grid max-w-4xl grid-cols-2 gap-x-4 gap-y-2.5 text-white/90 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8">
+            <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
+              <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.079-.481 1.079-1.102a1.44 1.44 0 00-.148-.643l-2.37-4.305A2.25 2.25 0 0016.764 11.25H14.25m3 7.5H9.75m5.25-12.75v4.5m0 0H3.375m11.625 0L12.375 3.375" />
               </svg>
-              <span className="text-[0.95rem] font-medium sm:text-sm">Own Dumpsters</span>
+              <span className="text-[0.82rem] font-medium sm:text-sm">Own Dumpsters</span>
             </div>
-            <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
+              <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <span className="text-[0.95rem] font-medium sm:text-sm">Lead Certified</span>
+              <span className="text-[0.82rem] font-medium sm:text-sm">Lead Certified</span>
             </div>
-            <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
+              <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2.25m5.25-2.25a9.75 9.75 0 11-19.5 0 9.75 9.75 0 0119.5 0z" />
               </svg>
-              <span className="text-[0.95rem] font-medium sm:text-sm">{COMPANY.hours}</span>
+              <span className="text-[0.82rem] font-medium sm:text-sm">{COMPANY.hours}</span>
             </div>
-            <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <svg className="h-5 w-5 shrink-0 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
+              <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
               </svg>
-              <span className="text-[0.95rem] font-medium sm:text-sm">{COMPANY.area}</span>
+              <span className="text-[0.82rem] font-medium sm:text-sm">{COMPANY.area}</span>
             </div>
         </div>
       </div>

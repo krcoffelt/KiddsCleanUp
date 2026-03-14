@@ -19,7 +19,7 @@ export default function ContactPage() {
           <p className="text-lg text-white/80 max-w-2xl">
             Fill out the form below and we&apos;ll get back to you promptly.
             Or call us directly at{" "}
-            <a href={COMPANY.phoneTel} className="text-accent hover:underline font-semibold">
+            <a href={COMPANY.phoneTel} className="whitespace-nowrap text-accent hover:underline font-semibold">
               {COMPANY.phone}
             </a>.
           </p>
