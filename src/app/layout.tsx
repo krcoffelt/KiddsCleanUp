@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Rajdhani } from "next/font/google";
-import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 import { LocalBusinessSchema } from "@/components/StructuredData";
 import "./globals.css";
 
@@ -72,19 +72,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${heading.variable} ${body.variable} antialiased`}>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-2MEYMKHX08"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2MEYMKHX08');
-          `}
-        </Script>
         <LocalBusinessSchema />
+        <CookieConsent />
         <Header />
         <main>{children}</main>
         <Footer />
