@@ -42,16 +42,16 @@ export const metadata: Metadata = {
     siteName: "Kidds Clean Up And Demolition",
     images: [
       {
-        url: "/images/Visby.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Kidds Clean Up And Demolition",
+        url: "/images/Screenshot_Homepage_Kidds.png",
+        width: 3338,
+        height: 1410,
+        alt: "Kidds Clean Up And Demolition homepage",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/images/Visby.jpg"],
+    images: ["/images/Screenshot_Homepage_Kidds.png"],
   },
   icons: {
     icon: "/icon.jpg",
