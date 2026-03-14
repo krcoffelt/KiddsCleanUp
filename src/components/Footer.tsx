@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { COMPANY, NAV_LINKS } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
+
+const FOOTER_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Residential", href: "/services/residential" },
+  { label: "Commercial", href: "/services/commercial" },
+  { label: "Lead-Safe", href: "/services/lead-safe" },
+  { label: "Water Mitigation", href: "/services/water-mitigation" },
+  { label: "Junk Removal", href: "/services/junk-removal" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+] as const;
 
 export default function Footer() {
   return (
@@ -58,8 +69,8 @@ export default function Footer() {
             <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-white/50">
               Quick Links
             </h3>
-            <ul className="space-y-2">
-              {NAV_LINKS.map((link) => (
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
