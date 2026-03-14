@@ -26,31 +26,31 @@ export default function Header() {
               alt={`${COMPANY.name} logo`}
               width={2500}
               height={200}
-              className="h-[1.6rem] sm:h-[2rem] w-auto max-w-[202px] sm:max-w-none"
+              className="h-[1.6rem] sm:h-[2rem] w-auto max-w-[186px] lg:max-w-[202px]"
               priority
             />
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5 lg:gap-1 shrink-0">
             {HEADER_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors rounded-md hover:bg-white/5"
+                className="px-2 lg:px-2.5 py-2 text-[0.92rem] lg:text-sm font-medium tracking-tight whitespace-nowrap text-white/90 hover:text-accent transition-colors rounded-md hover:bg-white/5"
               >
                 {link.label}
               </Link>
             ))}
             <a
               href={COMPANY.phoneTel}
-              className="ml-2 px-3 py-2 text-sm font-semibold text-white/90 hover:text-accent transition-colors"
+              className="ml-1.5 lg:ml-2 px-2 lg:px-2.5 py-2 text-[0.92rem] lg:text-sm font-semibold tracking-tight whitespace-nowrap text-white/90 hover:text-accent transition-colors"
             >
               {COMPANY.phone}
             </a>
             <Link
               href="/contact"
-              className="premium-cta ml-3 inline-flex items-center px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-sm rounded-md transition-colors"
+              className="premium-cta ml-2 lg:ml-3 inline-flex items-center px-4 lg:px-5 py-2.5 bg-accent hover:bg-accent-dark text-white font-bold text-[0.92rem] lg:text-sm whitespace-nowrap rounded-md transition-colors"
             >
               Request Quote
             </Link>
