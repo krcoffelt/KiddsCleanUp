@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/lib/supabase";
+import { ALLOWED_SERVICE_TYPES } from "@/lib/constants";
 import type { LeadFormData, QuoteResponse } from "@/lib/types";
 import crypto from "crypto";
 
@@ -48,6 +49,8 @@ function validateForm(data: LeadFormData): Record<string, string> {
 
   if (!data.service_type || data.service_type.trim().length === 0) {
     errors.service_type = "Please select a service type.";
+  } else if (!ALLOWED_SERVICE_TYPES.includes(data.service_type as (typeof ALLOWED_SERVICE_TYPES)[number])) {
+    errors.service_type = "Please select a valid service type.";
   }
 
   if (data.project_address && data.project_address.length > 300) {

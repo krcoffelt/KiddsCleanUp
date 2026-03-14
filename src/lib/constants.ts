@@ -20,15 +20,19 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SERVICE_TYPES = [
-  "Residential Cleanup",
-  "Residential Demolition",
-  "Commercial Cleanup",
-  "Commercial Demolition",
   "Junk Removal",
-  "Lead-Safe Removal",
-  "Lead-Safe Demolition",
+  "Commercial Demo",
+  "Residential Demo",
+  "Lead Demo",
   "Water Mitigation",
-  "Other",
+];
+
+export const ALLOWED_SERVICE_TYPES = [
+  "Junk Removal",
+  "Commercial Demo",
+  "Residential Demo",
+  "Lead Demo",
+  "Water Mitigation",
 ] as const;
 
 export const SERVICE_AREA_CITIES = [
