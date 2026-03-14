@@ -14,9 +14,9 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 min-h-[5rem]">
           <Link href="/" className="inline-flex items-center">
             <Image
-              src="/images/KiddsCleanUpLogo_ExtraLong.png"
+              src="/images/Visby (500 x 500 px) (400 x 200 px) (1).png"
               alt={`${COMPANY.name} logo`}
-              width={1200}
+              width={2500}
               height={200}
               className="h-8 sm:h-10 w-auto max-w-[250px] sm:max-w-none"
               priority

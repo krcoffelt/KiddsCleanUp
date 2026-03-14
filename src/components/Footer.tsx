@@ -39,9 +39,9 @@ export default function Footer() {
           <div>
             <Link href="/" className="mb-3 inline-flex items-center">
               <Image
-                src="/images/KiddsCleanUpLogo_ExtraLong.png"
+                src="/images/Visby (500 x 500 px) (400 x 200 px) (1).png"
                 alt={`${COMPANY.name} logo`}
-                width={1200}
+                width={2500}
                 height={200}
                 className="h-9 sm:h-10 w-auto max-w-full"
               />
