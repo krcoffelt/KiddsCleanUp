@@ -3,11 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { COMPANY, NAV_LINKS } from "@/lib/constants";
+import { COMPANY } from "@/lib/constants";
+
+const HEADER_LINKS = [
+  { label: "Residential", href: "/services/residential" },
+  { label: "Commercial", href: "/services/commercial" },
+  { label: "Lead-Safe", href: "/services/lead-safe" },
+  { label: "Water Mitigation", href: "/services/water-mitigation" },
+  { label: "Junk Removal", href: "/services/junk-removal" },
+] as const;
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const headerLinks = NAV_LINKS.filter((link) => link.href !== "/");
 
   return (
     <header className="sticky top-0 z-50 bg-primary-dark/95 backdrop-blur-sm shadow-lg">
@@ -26,7 +33,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
-            {headerLinks.map((link) => (
+            {HEADER_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -70,7 +77,7 @@ export default function Header() {
         {/* Mobile nav */}
         {mobileOpen && (
           <div className="md:hidden border-t border-white/10 pb-4">
-            {headerLinks.map((link) => (
+            {HEADER_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
