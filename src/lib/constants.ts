@@ -31,14 +31,6 @@ export const SERVICE_TYPES = [
   "Other",
 ] as const;
 
-export const REFERRAL_SOURCES = [
-  "Google Search",
-  "Social Media",
-  "Referral / Word of Mouth",
-  "Repeat Customer",
-  "Other",
-] as const;
-
 export const SERVICE_AREA_CITIES = [
   "Kansas City, MO",
   "Kansas City, KS",

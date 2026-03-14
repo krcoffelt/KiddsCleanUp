@@ -7,7 +7,6 @@ export interface LeadFormData {
   project_details: string;
   preferred_date: string;
   preferred_time: string;
-  referral_source: string;
 }
 
 export interface QuoteSuccessResponse {

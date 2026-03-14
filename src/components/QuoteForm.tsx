@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { SERVICE_TYPES, REFERRAL_SOURCES } from "@/lib/constants";
+import { SERVICE_TYPES } from "@/lib/constants";
 import type { LeadFormData, QuoteResponse } from "@/lib/types";
 
 export default function QuoteForm() {
@@ -35,7 +35,6 @@ export default function QuoteForm() {
       project_details: (fd.get("project_details") as string) ?? "",
       preferred_date: (fd.get("preferred_date") as string) ?? "",
       preferred_time: (fd.get("preferred_time") as string) ?? "",
-      referral_source: (fd.get("referral_source") as string) ?? "",
     };
 
     try {
@@ -212,24 +211,6 @@ export default function QuoteForm() {
             className={inputClass("preferred_time")}
           />
         </div>
-      </div>
-
-      {/* Referral */}
-      <div>
-          <label htmlFor="referral_source" className="block text-sm font-medium mb-1.5">
-            How did you hear about us?
-          </label>
-          <select
-            id="referral_source"
-            name="referral_source"
-            className={inputClass("referral_source")}
-            defaultValue=""
-          >
-            <option value="">Select...</option>
-            {REFERRAL_SOURCES.map((r) => (
-              <option key={r} value={r}>{r}</option>
-            ))}
-          </select>
       </div>
 
       <button
