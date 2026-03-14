@@ -119,11 +119,11 @@ function ServicesSection() {
             Our Services
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            From residential cleanouts to emergency water mitigation, we handle
-            every job with the same commitment to quality and safety.
+            From junk removal and residential cleanouts to emergency water
+            mitigation, we handle every job with the same commitment to quality and safety.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
           <ServiceCard
             title="Residential Services"
             description="Complete home cleanouts, garage and shed demolition, deck removal, interior demolition, and property cleanup for homeowners across the KC metro."
@@ -141,6 +141,16 @@ function ServicesSection() {
             icon={
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+              </svg>
+            }
+          />
+          <ServiceCard
+            title="Junk Removal"
+            description="Fast pickup and haul-away for household junk, furniture, appliances, yard debris, and property cleanouts."
+            href="/services/junk-removal"
+            icon={
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M9.75 6.75V5.25c0-.828.672-1.5 1.5-1.5h1.5c.828 0 1.5.672 1.5 1.5v1.5m-8.25 0v11.25c0 .828.672 1.5 1.5 1.5h9c.828 0 1.5-.672 1.5-1.5V6.75M9.75 10.5v5.25m4.5-5.25v5.25" />
               </svg>
             }
           />

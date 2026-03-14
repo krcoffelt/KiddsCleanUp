@@ -4,7 +4,7 @@ import { COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us & Request a Quote",
-  description: `Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`,
+  description: `Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`,
 };
 
 export default function ContactPage() {

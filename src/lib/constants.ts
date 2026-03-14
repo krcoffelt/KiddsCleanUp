@@ -24,6 +24,7 @@ export const SERVICE_TYPES = [
   "Residential Demolition",
   "Commercial Cleanup",
   "Commercial Demolition",
+  "Junk Removal",
   "Lead-Safe Removal",
   "Lead-Safe Demolition",
   "Water Mitigation",

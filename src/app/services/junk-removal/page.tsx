@@ -3,50 +3,50 @@ import Link from "next/link";
 import { COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Water Mitigation Services",
-  description: `Emergency water mitigation in Kansas City for burst pipes, flooding, roof leaks, and appliance failures. Fast water extraction, drying, and moisture control. Call ${COMPANY.phone} for a free quote.`,
+  title: "Junk Removal Services",
+  description: `Junk removal in Kansas City for homes, rental properties, garages, estates, and job sites. Fast haul-away for furniture, appliances, debris, and clutter. Call ${COMPANY.phone} for a free quote.`,
 };
 
 const services = [
   {
-    title: "Emergency Water Extraction",
-    description: "Rapid removal of standing water from floors, basements, crawlspaces, and affected rooms to stabilize the property quickly.",
+    title: "Household Junk Removal",
+    description: "Removal of old furniture, boxed clutter, mattresses, appliances, and unwanted household items from homes and apartments.",
   },
   {
-    title: "Structural Drying",
-    description: "Targeted drying of walls, flooring, framing, and building materials with air movers and industrial dehumidifiers.",
+    title: "Garage, Basement & Shed Cleanouts",
+    description: "Fast cleanout of overfilled garages, basements, sheds, and storage spaces so you can reclaim usable space.",
   },
   {
-    title: "Moisture Detection & Monitoring",
-    description: "Moisture checks throughout the drying process to identify hidden water and track progress until the area is stable.",
+    title: "Estate & Move-Out Cleanouts",
+    description: "Practical haul-away help for estate situations, downsizing, evictions, and move-out cleanups when large volumes need to go quickly.",
   },
   {
-    title: "Burst Pipe & Leak Response",
-    description: "Fast action after pipe breaks, appliance failures, and roof leaks to reduce damage before it spreads further.",
+    title: "Yard Debris & Exterior Cleanup",
+    description: "Removal of branches, fencing, exterior junk piles, and general debris left around the property.",
   },
   {
-    title: "Flooded Area Cleanup",
-    description: "Cleanup and mitigation for water intrusion from storms, overflows, and indoor flooding events.",
+    title: "Rental Property Turnover Cleanup",
+    description: "Junk removal and property cleanout for landlords and property managers between tenants.",
   },
   {
-    title: "Property Stabilization",
-    description: "Immediate drying and moisture control that helps reduce long-term damage and prepares the property for repairs.",
+    title: "Construction & Renovation Debris",
+    description: "Haul-away for leftover material, broken fixtures, packaging, and debris after remodels or demolition work.",
   },
 ];
 
-export default function WaterMitigationPage() {
+export default function JunkRemovalPage() {
   return (
     <>
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-accent font-semibold mb-2">Water Mitigation</p>
+          <p className="text-accent font-semibold mb-2">Junk Removal</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Kansas City Water Mitigation When Damage Can&apos;t Wait
+            Kansas City Junk Removal That Gets the Space Cleared Fast
           </h1>
           <p className="text-lg text-white/80 max-w-3xl">
-            Water mitigation is the first and most critical step after burst pipes,
-            flooding, roof leaks, or appliance failures. We move quickly to stop the
-            source, remove standing water, and begin drying before the damage gets worse.
+            We remove unwanted junk, furniture, appliances, debris, and clutter from
+            homes, rental properties, garages, and job sites across the Kansas City metro.
+            You point to what needs to go, and we handle the haul-away.
           </p>
         </div>
       </section>
@@ -71,14 +71,15 @@ export default function WaterMitigationPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-primary-dark mb-6">
-              Why Quick Water Mitigation Matters
+              Why Homeowners and Property Managers Call Us
             </h2>
             <ul className="text-left space-y-4 max-w-2xl mx-auto">
               {[
-                "Standing water needs to be removed immediately to keep damage from spreading through floors, walls, and contents.",
-                "Professional drying equipment helps remove moisture trapped inside building materials, not just surface water.",
-                "Mold growth and structural damage can begin within 24 to 48 hours if water is left untreated.",
-                "Fast mitigation helps stabilize the property and reduce long-term repair and restoration costs.",
+                "Fast turnaround when a property needs to be cleared out quickly",
+                "Heavy lifting and haul-away handled by our crew",
+                "Great fit for move-outs, estate cleanouts, and rental turnovers",
+                "Honest pricing without drawn-out cleanup timelines",
+                "A cleaner, safer property that is ready for its next use",
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <svg className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -94,9 +95,9 @@ export default function WaterMitigationPage() {
 
       <section className="py-16 sm:py-20 bg-primary text-white text-center">
         <div className="mx-auto max-w-3xl px-4">
-          <h2 className="text-3xl font-bold mb-4">Need Water Mitigation Fast?</h2>
+          <h2 className="text-3xl font-bold mb-4">Need Junk Removed?</h2>
           <p className="text-white/80 mb-8">
-            Tell us what happened and we&apos;ll help you take the next step quickly.
+            Tell us what needs to go and we&apos;ll give you a straightforward quote.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

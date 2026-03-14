@@ -42,7 +42,7 @@ export default function CommercialPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-accent font-semibold mb-2">Commercial Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Commercial Cleanup &amp; Demolition
+            Kansas City Commercial Cleanup &amp; Demolition
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
             Reliable, efficient commercial demolition and cleanup for businesses,

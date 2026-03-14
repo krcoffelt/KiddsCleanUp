@@ -42,7 +42,7 @@ export default function ResidentialPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-accent font-semibold mb-2">Residential Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Residential Cleanup &amp; Demolition
+            Kansas City Residential Cleanup &amp; Demolition
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
             From whole-home cleanouts to selective interior demolition, we help

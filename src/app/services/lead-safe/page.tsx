@@ -34,7 +34,7 @@ export default function LeadSafePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="text-accent font-semibold mb-2">Lead-Safe Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Lead-Safe Removal &amp; Demolition
+            Kansas City Lead-Safe Removal &amp; Demolition
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
             Protect your family, tenants, and workers with certified lead-safe

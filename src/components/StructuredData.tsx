@@ -6,7 +6,7 @@ export function LocalBusinessSchema() {
     "@type": "LocalBusiness",
     name: COMPANY.name,
     description:
-      "Family-owned cleanup and demolition company serving the Kansas City metro area. Residential and commercial cleanup, demolition, lead-safe services, and water mitigation.",
+      "Family-owned cleanup and demolition company serving the Kansas City metro area. Residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation.",
     telephone: "+1-816-457-4363",
     email: COMPANY.emails[0],
     url: "https://kiddscleanup.com",
@@ -26,6 +26,7 @@ export function LocalBusinessSchema() {
     serviceType: [
       "Residential Cleanup",
       "Commercial Cleanup",
+      "Junk Removal",
       "Residential Demolition",
       "Commercial Demolition",
       "Lead-Safe Removal",
