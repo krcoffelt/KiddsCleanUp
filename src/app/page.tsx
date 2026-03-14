@@ -81,7 +81,8 @@ function HeroSection() {
               className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
             >
               <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75h6.75m-6.75 3h4.5M21 12c0 4.97-4.701 9-10.5 9a11.76 11.76 0 01-4.226-.777L3 21l1.126-3.005A8.963 8.963 0 013 12c0-4.97 4.701-9 10.5-9S24 7.03 24 12z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 9.75h9m-9 0a2.25 2.25 0 00-2.25 2.25v6l3.068-1.534c.313-.157.659-.239 1.009-.239H16.5a2.25 2.25 0 002.25-2.25v-2.25m-11.25-2.25V8.625A2.25 2.25 0 019.75 6.375h6.75a2.25 2.25 0 012.25 2.25v3.375" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 12.75h.008v.008H9.75v-.008zm2.996 0h.008v.008h-.008v-.008zm2.996 0h.008v.008h-.008v-.008z" />
               </svg>
               Text Us 24/7
             </a>

@@ -43,6 +43,10 @@ export default function Footer() {
               href={COMPANY.textTel}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
             >
+              <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 9.75h9m-9 0a2.25 2.25 0 00-2.25 2.25v6l3.068-1.534c.313-.157.659-.239 1.009-.239H16.5a2.25 2.25 0 002.25-2.25v-2.25m-11.25-2.25V8.625A2.25 2.25 0 019.75 6.375h6.75a2.25 2.25 0 012.25 2.25v3.375" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 12.75h.008v.008H9.75v-.008zm2.996 0h.008v.008h-.008v-.008zm2.996 0h.008v.008h-.008v-.008z" />
+              </svg>
               Text Us 24/7
             </a>
           </div>
