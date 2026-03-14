@@ -26,6 +26,83 @@ function hashValue(value: string): string {
   return crypto.createHash("sha256").update(value).digest("hex").slice(0, 16);
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Promise<void> {
+  const resendApiKey = process.env.RESEND_API_KEY;
+  const to = process.env.LEAD_NOTIFY_EMAIL;
+  const from = process.env.LEAD_FROM_EMAIL;
+
+  if (!resendApiKey || !to || !from) {
+    console.warn("Resend notification skipped: missing RESEND_API_KEY, LEAD_NOTIFY_EMAIL, or LEAD_FROM_EMAIL");
+    return;
+  }
+
+  const subject = `New Quote Request: ${data.service_type} - ${data.full_name}`;
+  const details = data.project_details || "No project details provided.";
+  const address = data.project_address || "No project address provided.";
+  const preferredDate = data.preferred_date || "No preferred date provided.";
+  const preferredTime = data.preferred_time || "No preferred time provided.";
+
+  const text = [
+    "New quote request received.",
+    "",
+    `Lead ID: ${leadId}`,
+    `Name: ${data.full_name}`,
+    `Phone: ${data.phone}`,
+    `Email: ${data.email}`,
+    `Service: ${data.service_type}`,
+    `Project Address: ${address}`,
+    `Preferred Date: ${preferredDate}`,
+    `Preferred Time: ${preferredTime}`,
+    "",
+    "Project Details:",
+    details,
+  ].join("\n");
+
+  const html = `
+    <h2>New quote request received</h2>
+    <p><strong>Lead ID:</strong> ${escapeHtml(leadId)}</p>
+    <p><strong>Name:</strong> ${escapeHtml(data.full_name)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(data.phone)}</p>
+    <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+    <p><strong>Service:</strong> ${escapeHtml(data.service_type)}</p>
+    <p><strong>Project Address:</strong> ${escapeHtml(address)}</p>
+    <p><strong>Preferred Date:</strong> ${escapeHtml(preferredDate)}</p>
+    <p><strong>Preferred Time:</strong> ${escapeHtml(preferredTime)}</p>
+    <p><strong>Project Details:</strong><br>${escapeHtml(details).replaceAll("\n", "<br>")}</p>
+  `.trim();
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${resendApiKey}`,
+      "Content-Type": "application/json",
+      "Idempotency-Key": `lead-${leadId}`,
+    },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: data.email,
+      subject,
+      text,
+      html,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Resend API error (${response.status}): ${errorText}`);
+  }
+}
+
 function validateForm(data: LeadFormData): Record<string, string> {
   const errors: Record<string, string> = {};
 
@@ -124,6 +201,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
         { ok: false, code: "SERVER_ERROR" },
         { status: 500 }
       );
+    }
+
+    try {
+      await sendLeadNotificationEmail(String(lead.id), data);
+    } catch (emailError) {
+      console.error("Lead notification email error:", emailError);
     }
 
     return NextResponse.json({ ok: true, lead_id: lead.id });
