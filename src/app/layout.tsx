@@ -40,14 +40,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Kidds Clean Up And Demolition",
+    images: [
+      {
+        url: "/images/Visby.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Kidds Clean Up And Demolition",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/images/Visby.jpg"],
   },
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/apple-icon.png",
+    icon: "/icon.jpg",
+    shortcut: "/icon.jpg",
+    apple: "/apple-icon.jpg",
   },
   robots: {
     index: true,
