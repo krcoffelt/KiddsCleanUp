@@ -43,7 +43,7 @@ export default function Footer() {
                 alt={`${COMPANY.name} logo`}
                 width={2500}
                 height={200}
-                className="h-[2rem] sm:h-[2.25rem] w-auto max-w-full"
+                className="h-[1.8rem] sm:h-[2rem] w-auto max-w-full"
               />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed">

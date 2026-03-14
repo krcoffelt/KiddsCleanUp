@@ -19,7 +19,7 @@ export default function Header() {
               alt={`${COMPANY.name} logo`}
               width={2500}
               height={200}
-              className="h-[1.8rem] sm:h-[2.25rem] w-auto max-w-[225px] sm:max-w-none"
+              className="h-[1.6rem] sm:h-[2rem] w-auto max-w-[202px] sm:max-w-none"
               priority
             />
           </Link>
