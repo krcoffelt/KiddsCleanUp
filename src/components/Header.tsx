@@ -20,13 +20,13 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-primary-dark/95 backdrop-blur-sm shadow-lg">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 min-h-[5rem]">
-          <Link href="/" className="inline-flex items-center">
+          <Link href="/" className="inline-flex shrink-0 items-center">
             <Image
               src="/images/Visby (500 x 500 px) (400 x 200 px) (1).png"
               alt={`${COMPANY.name} logo`}
               width={2500}
               height={200}
-              className="h-[1.6rem] sm:h-[2rem] w-auto max-w-[186px] lg:max-w-[202px]"
+              className="h-[1.6rem] sm:h-[2rem] w-auto"
               priority
             />
           </Link>
