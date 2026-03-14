@@ -66,11 +66,20 @@ export default function Footer() {
                 className="h-[1.8rem] sm:h-[2rem] w-auto max-w-full"
               />
             </Link>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Family-owned cleanup and demolition company serving the Kansas City
-              metro area since {COMPANY.since}. Owner-operated with our own
-              dumpsters and equipment.
-            </p>
+            <div className="space-y-2 text-sm leading-relaxed text-white/70">
+              <p className="font-semibold text-white">Kidds Clean Up and Demo</p>
+              <p>Kansas City Metro Service-Area Business</p>
+              <p>
+                <a href={COMPANY.phoneTel} className="hover:text-accent transition-colors">
+                  (816) 457-4363
+                </a>
+              </p>
+              <p>Open Daily: 8:00 AM &ndash; 6:00 PM</p>
+              <p>
+                Residential Demo | Commercial Demo | Junk Removal | Lead-Safe |
+                {" "}Water Mitigation
+              </p>
+            </div>
           </div>
 
           {/* Quick links */}

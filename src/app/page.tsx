@@ -7,37 +7,37 @@ import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
 const PROJECT_PHOTOS = [
   {
     src: "/images/photo-1.png",
-    alt: "Cleanup and demolition job site from Kidds Clean Up",
+    alt: "Cleanup and demolition job site from Kidd's Clean Up and Demo",
     className: "md:col-span-7 md:row-span-2 min-h-[260px] md:min-h-[520px]",
     sizes: "(min-width: 768px) 58vw, 100vw",
   },
   {
     src: "/images/photo-2.png",
-    alt: "Project photo showing Kidds Clean Up on-site work",
+    alt: "Project photo showing Kidd's Clean Up and Demo on-site work",
     className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-3.png",
-    alt: "Cleanup project example from Kidds Clean Up",
+    alt: "Cleanup project example from Kidd's Clean Up and Demo",
     className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
     src: "/images/photo-4.png",
-    alt: "Demolition and cleanup work completed by Kidds Clean Up",
+    alt: "Demolition and cleanup work completed by Kidd's Clean Up and Demo",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-5.png",
-    alt: "Kansas City cleanup and demolition project by Kidds Clean Up",
+    alt: "Kansas City cleanup and demolition project by Kidd's Clean Up and Demo",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
     src: "/images/photo-6.png",
-    alt: "Example of a Kidds Clean Up project site",
+    alt: "Example of a Kidd's Clean Up and Demo project site",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
@@ -104,7 +104,7 @@ function HeroSection() {
               <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2.25m5.25-2.25a9.75 9.75 0 11-19.5 0 9.75 9.75 0 0119.5 0z" />
               </svg>
-              <span className="text-[0.82rem] font-medium sm:text-sm">{COMPANY.hours}</span>
+              <span className="text-[0.82rem] font-medium sm:text-sm">Since 2017</span>
             </div>
             <div className="flex min-w-0 items-center gap-2 whitespace-nowrap">
               <svg className="h-4.5 w-4.5 shrink-0 text-white sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
@@ -195,7 +195,7 @@ function TrustSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">
-            Why Choose Kidds Clean Up?
+            Why Choose Kidd&apos;s Clean Up and Demo?
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
             We&apos;re not just another contractor. We&apos;re a family that

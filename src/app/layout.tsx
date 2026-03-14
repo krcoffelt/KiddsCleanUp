@@ -22,11 +22,11 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kiddscleanup.com"),
   title: {
-    default: "Kidds Clean Up And Demolition | Kansas City Cleanup & Demo",
-    template: "%s | Kidds Clean Up And Demolition",
+    default: "Kansas City Demolition, Cleanouts & Junk Removal | Kidd's Clean Up and Demo",
+    template: "%s | Kidd's Clean Up and Demo",
   },
   description:
-    "Family-owned cleanup and demolition company serving the Kansas City metro since 2017. Residential & commercial cleanup, demolition, and lead-safe services. Owner-operated with our own dumpsters. Call 816-457-4363.",
+    "Kidds Clean Up and Demo provides residential and commercial demolition, junk removal, cleanouts, lead-safe work, and water mitigation across the Kansas City metro. Call for a free quote.",
   keywords: [
     "Kansas City demolition",
     "KC cleanup",
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Kidds Clean Up And Demolition",
+    siteName: "Kidd's Clean Up and Demo",
     images: [
       {
         url: "/images/Screenshot_Homepage_Kidds.png",
         width: 3338,
         height: 1410,
-        alt: "Kidds Clean Up And Demolition homepage",
+        alt: "Kidd's Clean Up and Demo homepage",
       },
     ],
   },

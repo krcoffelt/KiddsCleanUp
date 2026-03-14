@@ -1,6 +1,6 @@
 export const COMPANY = {
-  name: "Kidds Clean Up And Demolition",
-  shortName: "Kidds Clean Up",
+  name: "Kidd's Clean Up and Demo",
+  shortName: "Kidd's Clean Up",
   phone: "816-457-4363",
   phoneTel: "tel:+18164574363",
   textTel: "sms:+18164574363",
