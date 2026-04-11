@@ -127,9 +127,19 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/50">
           <p>&copy; {new Date().getFullYear()} {COMPANY.name}. All rights reserved.</p>
-          <Link href="/privacy" className="hover:text-accent transition-colors">
-            Privacy Policy
-          </Link>
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <a
+              href="https://hometownkc.agency"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              Website by Hometown Marketing Agency
+            </a>
+            <Link href="/privacy" className="hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
