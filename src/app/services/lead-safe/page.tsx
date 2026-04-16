@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FAQSection from "@/components/FAQSection";
+import LocationLinkChips from "@/components/LocationLinkChips";
+import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/components/PageSchemas";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 
+const pageTitle = "Kansas City Lead-Safe Removal & Demolition";
+const pageDescription = `Lead-safe removal, EPA-conscious demolition, and hazard-focused cleanup services across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
 export const metadata: Metadata = {
-  title: "Lead-Safe Removal & Demolition Services",
-  description: `Lead-safe removal and demolition services in Kansas City. EPA-compliant lead paint removal, certified practices, and safe disposal. Call ${COMPANY.phone} for a free quote.`,
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: "/services/lead-safe",
+  },
 };
 
 const services = [
@@ -27,11 +37,27 @@ const services = [
 ];
 
 export default function LeadSafePage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Lead-Safe Demo", href: "/services/lead-safe" },
+  ];
+
   return (
     <>
+      <WebPageSchema title={pageTitle} description={pageDescription} path="/services/lead-safe" />
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ServiceSchema
+        name="Kansas City Lead-Safe Removal & Demolition"
+        description={pageDescription}
+        path="/services/lead-safe"
+        serviceType="Lead-safe removal and demolition services"
+      />
+      <FAQSchema items={SERVICE_PAGE_FAQS["lead-safe"]} />
+
       {/* Hero */}
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Lead-Safe Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Kansas City Lead-Safe Removal &amp; Demolition
@@ -126,6 +152,18 @@ export default function LeadSafePage() {
         </div>
       </section>
 
+      <FAQSection
+        title="Lead-Safe Service FAQs"
+        intro="Common questions from Kansas City property owners looking for lead-safe handling, certified demo practices, and practical next steps."
+        items={SERVICE_PAGE_FAQS["lead-safe"]}
+      />
+
+      <LocationLinkChips
+        title="Lead-Safe Service Areas"
+        intro="We provide lead-safe removal and demolition support throughout these priority service areas in the KC metro."
+        links={PRIORITY_CITY_LINKS}
+      />
+
       {/* CTA */}
       <section className="py-16 sm:py-20 bg-primary text-white text-center">
         <div className="mx-auto max-w-3xl px-4">
@@ -134,18 +172,22 @@ export default function LeadSafePage() {
             Don&apos;t take chances with lead. Get a free consultation and quote for your project.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "lead_safe_service_page" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "lead_safe_service_page" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

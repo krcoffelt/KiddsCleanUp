@@ -7,6 +7,13 @@ export interface LeadFormData {
   project_details: string;
   preferred_date: string;
   preferred_time: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_term: string;
+  utm_content: string;
+  landing_page: string;
+  referrer_url: string;
 }
 
 export interface QuoteSuccessResponse {

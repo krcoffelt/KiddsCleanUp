@@ -26,7 +26,10 @@ export const metadata: Metadata = {
     template: "%s | Kidd's Clean Up and Demo",
   },
   description:
-    "Kidds Clean Up and Demo provides residential and commercial demolition, junk removal, cleanouts, lead-safe work, and water mitigation across the Kansas City metro. Call for a free quote.",
+    "Kidd's Clean Up and Demo provides residential and commercial demolition, junk removal, cleanouts, lead-safe work, and water mitigation across the Kansas City metro. Call for a free quote.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Kansas City demolition",
     "KC cleanup",

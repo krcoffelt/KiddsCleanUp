@@ -1,18 +1,36 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/PageSchemas";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: `Learn about ${COMPANY.name}, a family-owned cleanup and demolition company serving the Kansas City metro since ${COMPANY.since}. Owner-operated with integrity and pride.`,
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+  ];
+
   return (
     <>
+      <WebPageSchema
+        title="About Kidd's Clean Up and Demo"
+        description={`Learn about ${COMPANY.name}, a family-owned cleanup and demolition company serving the Kansas City metro since ${COMPANY.since}. Owner-operated with integrity and pride.`}
+        path="/about"
+      />
+      <BreadcrumbSchema items={breadcrumbs} />
+
       {/* Hero */}
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">About Us</h1>
           <p className="text-lg text-white/80 max-w-2xl">
             Family-owned, owner-operated, and committed to doing the job right
@@ -94,18 +112,22 @@ export default function AboutPage() {
             Get a free, no-obligation quote for your next project.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "about_page" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "about_page" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

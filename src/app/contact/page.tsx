@@ -1,27 +1,51 @@
 import type { Metadata } from "next";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/PageSchemas";
 import QuoteForm from "@/components/QuoteForm";
-import { COMPANY } from "@/lib/constants";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us & Request a Quote",
   description: `Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`,
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   return (
     <>
+      <WebPageSchema
+        title="Request a Free Quote"
+        description={`Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`}
+        path="/contact"
+      />
+      <BreadcrumbSchema items={breadcrumbs} />
+
       {/* Hero */}
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Request a Free Quote
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
             Fill out the form below and we&apos;ll get back to you promptly.
             Or call us directly at{" "}
-            <a href={COMPANY.phoneTel} className="whitespace-nowrap text-accent hover:underline font-semibold">
+            <TrackedLink
+              href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "contact_page_hero" }}
+              className="whitespace-nowrap font-semibold text-accent hover:underline"
+            >
               {COMPANY.phone}
-            </a>.
+            </TrackedLink>.
           </p>
         </div>
       </section>
@@ -52,9 +76,14 @@ export default function ContactPage() {
                     </svg>
                     <div>
                       <p className="font-semibold">Phone</p>
-                      <a href={COMPANY.phoneTel} className="text-primary hover:text-accent transition-colors">
+                      <TrackedLink
+                        href={COMPANY.phoneTel}
+                        eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+                        eventParams={{ cta_location: "contact_page_sidebar" }}
+                        className="text-primary hover:text-accent transition-colors"
+                      >
                         {COMPANY.phone}
-                      </a>
+                      </TrackedLink>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">

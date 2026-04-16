@@ -57,6 +57,7 @@ export const SERVICE_AREA_CITIES = [
 
 export const ANALYTICS_EVENTS = {
   CTA_CALL_CLICK: "cta_call_click",
+  CTA_SMS_CLICK: "cta_sms_click",
   CTA_REQUEST_QUOTE_CLICK: "cta_request_quote_click",
   SERVICE_PAGE_VIEW: "service_page_view",
   FORM_SUBMIT_SUCCESS: "form_submit_success",

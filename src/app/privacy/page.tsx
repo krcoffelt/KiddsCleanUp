@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { COMPANY } from "@/lib/constants";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `Privacy policy for ${COMPANY.name}. Learn how we collect, use, and protect your information.`,
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 export default function PrivacyPage() {
@@ -131,7 +135,17 @@ export default function PrivacyPage() {
                 please contact us:
               </p>
               <ul className="list-none pl-0 mt-2 space-y-1">
-                <li>Phone: <a href={COMPANY.phoneTel} className="text-primary hover:text-accent">{COMPANY.phone}</a></li>
+                <li>
+                  Phone:{" "}
+                  <TrackedLink
+                    href={COMPANY.phoneTel}
+                    eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+                    eventParams={{ cta_location: "privacy_page" }}
+                    className="text-primary hover:text-accent"
+                  >
+                    {COMPANY.phone}
+                  </TrackedLink>
+                </li>
                 {COMPANY.emails.map((email) => (
                   <li key={email}>
                     Email: <a href={`mailto:${email}`} className="text-primary hover:text-accent">{email}</a>

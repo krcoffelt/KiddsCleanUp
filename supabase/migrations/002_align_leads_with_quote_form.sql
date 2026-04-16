@@ -31,6 +31,13 @@ ALTER TABLE public.leads
   ADD COLUMN IF NOT EXISTS project_details text,
   ADD COLUMN IF NOT EXISTS preferred_date text,
   ADD COLUMN IF NOT EXISTS preferred_time text,
+  ADD COLUMN IF NOT EXISTS utm_source text,
+  ADD COLUMN IF NOT EXISTS utm_medium text,
+  ADD COLUMN IF NOT EXISTS utm_campaign text,
+  ADD COLUMN IF NOT EXISTS utm_term text,
+  ADD COLUMN IF NOT EXISTS utm_content text,
+  ADD COLUMN IF NOT EXISTS landing_page text,
+  ADD COLUMN IF NOT EXISTS referrer_url text,
   ADD COLUMN IF NOT EXISTS source_page text,
   ADD COLUMN IF NOT EXISTS ip_hash text,
   ADD COLUMN IF NOT EXISTS user_agent text;

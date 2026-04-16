@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FAQSection from "@/components/FAQSection";
+import LocationLinkChips from "@/components/LocationLinkChips";
+import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/components/PageSchemas";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 
+const pageTitle = "Kansas City Commercial Demolition & Cleanup";
+const pageDescription = `Commercial demolition, office buildout demo, warehouse cleanup, retail strip-outs, and site prep across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
 export const metadata: Metadata = {
-  title: "Commercial Cleanup & Demolition Services",
-  description: `Commercial cleanup and demolition in Kansas City. Office buildout demo, warehouse cleanup, retail clearing, and site prep. Call ${COMPANY.phone} for a free quote.`,
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: "/services/commercial",
+  },
 };
 
 const services = [
@@ -35,11 +45,27 @@ const services = [
 ];
 
 export default function CommercialPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Commercial Demo", href: "/services/commercial" },
+  ];
+
   return (
     <>
+      <WebPageSchema title={pageTitle} description={pageDescription} path="/services/commercial" />
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ServiceSchema
+        name="Kansas City Commercial Demolition & Cleanup"
+        description={pageDescription}
+        path="/services/commercial"
+        serviceType="Commercial demolition and cleanup services"
+      />
+      <FAQSchema items={SERVICE_PAGE_FAQS.commercial} />
+
       {/* Hero */}
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Commercial Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Kansas City Commercial Cleanup &amp; Demolition
@@ -95,6 +121,18 @@ export default function CommercialPage() {
         </div>
       </section>
 
+      <FAQSection
+        title="Commercial Demolition FAQs"
+        intro="Common questions from Kansas City contractors, businesses, landlords, and property managers planning a commercial cleanup or demolition project."
+        items={SERVICE_PAGE_FAQS.commercial}
+      />
+
+      <LocationLinkChips
+        title="Commercial Demo Service Areas"
+        intro="We support commercial demolition and cleanup projects throughout these priority KC metro markets."
+        links={PRIORITY_CITY_LINKS}
+      />
+
       {/* CTA */}
       <section className="py-16 sm:py-20 bg-primary text-white text-center">
         <div className="mx-auto max-w-3xl px-4">
@@ -103,18 +141,22 @@ export default function CommercialPage() {
             Tell us about your commercial project and we&apos;ll provide a detailed, honest estimate.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "commercial_service_page" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "commercial_service_page" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS } from "@/lib/local-seo";
 
 const FOOTER_LINKS = [
   { label: "Home", href: "/" },
@@ -27,34 +29,40 @@ export default function Footer() {
             Family-owned and serving the KC metro since {COMPANY.since}.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "footer_cta" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "footer_cta" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.textTel}
+              eventName={ANALYTICS_EVENTS.CTA_SMS_CLICK}
+              eventParams={{ cta_location: "footer_cta" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
             >
               <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9A2.25 2.25 0 0118.75 10.5v4.5a2.25 2.25 0 01-2.25 2.25h-5.69a2.25 2.25 0 00-1.006.238L6 19.5v-1.875A2.25 2.25 0 013.75 15.375V12A3.75 3.75 0 017.5 8.25z" />
               </svg>
               Text Us 24/7
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </div>
 
       {/* Footer content */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
           {/* Company info */}
           <div>
             <Link href="/" className="mb-3 inline-flex items-center">
@@ -67,12 +75,17 @@ export default function Footer() {
               />
             </Link>
             <div className="space-y-2 text-sm leading-relaxed text-white/70">
-              <p className="font-semibold text-white">Kidds Clean Up and Demo</p>
+              <p className="font-semibold text-white">Kidd&apos;s Clean Up and Demo</p>
               <p>Kansas City Metro Service-Area Business</p>
               <p>
-                <a href={COMPANY.phoneTel} className="hover:text-accent transition-colors">
+                <TrackedLink
+                  href={COMPANY.phoneTel}
+                  eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+                  eventParams={{ cta_location: "footer_company_info" }}
+                  className="hover:text-accent transition-colors"
+                >
                   (816) 457-4363
-                </a>
+                </TrackedLink>
               </p>
               <p>Open Daily: 8:00 AM &ndash; 6:00 PM</p>
               <p>
@@ -101,6 +114,24 @@ export default function Footer() {
             </ul>
           </div>
 
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-white/50">
+              Service Areas
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {PRIORITY_CITY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact info */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider mb-3 text-white/50">
@@ -108,9 +139,14 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm text-white/70">
               <li>
-                <a href={COMPANY.phoneTel} className="hover:text-accent transition-colors">
+                <TrackedLink
+                  href={COMPANY.phoneTel}
+                  eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+                  eventParams={{ cta_location: "footer_contact" }}
+                  className="hover:text-accent transition-colors"
+                >
                   {COMPANY.phone}
-                </a>
+                </TrackedLink>
               </li>
               {COMPANY.emails.map((email) => (
                 <li key={email}>

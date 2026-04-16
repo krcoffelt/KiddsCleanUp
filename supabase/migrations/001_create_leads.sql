@@ -23,6 +23,13 @@ CREATE TABLE IF NOT EXISTS public.leads (
   project_details text CHECK (char_length(project_details) <= 2000),
   preferred_date text,
   preferred_time text,
+  utm_source text CHECK (utm_source IS NULL OR char_length(utm_source) <= 255),
+  utm_medium text CHECK (utm_medium IS NULL OR char_length(utm_medium) <= 255),
+  utm_campaign text CHECK (utm_campaign IS NULL OR char_length(utm_campaign) <= 255),
+  utm_term text CHECK (utm_term IS NULL OR char_length(utm_term) <= 255),
+  utm_content text CHECK (utm_content IS NULL OR char_length(utm_content) <= 255),
+  landing_page text CHECK (landing_page IS NULL OR char_length(landing_page) <= 500),
+  referrer_url text CHECK (referrer_url IS NULL OR char_length(referrer_url) <= 500),
 
   -- Audit columns from the API route
   source_page text,

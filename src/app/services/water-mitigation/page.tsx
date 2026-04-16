@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FAQSection from "@/components/FAQSection";
+import LocationLinkChips from "@/components/LocationLinkChips";
+import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/components/PageSchemas";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 
+const pageTitle = "Kansas City Water Mitigation";
+const pageDescription = `Emergency water mitigation, extraction, drying, and moisture control across the Kansas City metro for leaks, flooding, and burst pipes. Call ${COMPANY.phone} for a free quote.`;
 export const metadata: Metadata = {
-  title: "Water Mitigation Services",
-  description: `Emergency water mitigation in Kansas City for burst pipes, flooding, roof leaks, and appliance failures. Fast water extraction, drying, and moisture control. Call ${COMPANY.phone} for a free quote.`,
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: "/services/water-mitigation",
+  },
 };
 
 const services = [
@@ -35,10 +45,26 @@ const services = [
 ];
 
 export default function WaterMitigationPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Water Mitigation", href: "/services/water-mitigation" },
+  ];
+
   return (
     <>
+      <WebPageSchema title={pageTitle} description={pageDescription} path="/services/water-mitigation" />
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ServiceSchema
+        name="Kansas City Water Mitigation"
+        description={pageDescription}
+        path="/services/water-mitigation"
+        serviceType="Water mitigation services"
+      />
+      <FAQSchema items={SERVICE_PAGE_FAQS["water-mitigation"]} />
+
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Water Mitigation</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Kansas City Water Mitigation When Damage Can&apos;t Wait
@@ -92,6 +118,18 @@ export default function WaterMitigationPage() {
         </div>
       </section>
 
+      <FAQSection
+        title="Water Mitigation FAQs"
+        intro="Questions we commonly hear from property owners looking for fast water mitigation help in the Kansas City metro."
+        items={SERVICE_PAGE_FAQS["water-mitigation"]}
+      />
+
+      <LocationLinkChips
+        title="Water Mitigation Service Areas"
+        intro="We provide water mitigation and property stabilization support throughout these priority KC metro locations."
+        links={PRIORITY_CITY_LINKS}
+      />
+
       <section className="py-16 sm:py-20 bg-primary text-white text-center">
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="text-3xl font-bold mb-4">Need Water Mitigation Fast?</h2>
@@ -99,18 +137,22 @@ export default function WaterMitigationPage() {
             Tell us what happened and we&apos;ll help you take the next step quickly.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "water_mitigation_service_page" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "water_mitigation_service_page" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

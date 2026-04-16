@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import FAQSection from "@/components/FAQSection";
+import LocationLinkChips from "@/components/LocationLinkChips";
+import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/components/PageSchemas";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 
+const pageTitle = "Kansas City Junk Removal & Property Cleanouts";
+const pageDescription = `Junk removal, move-out cleanouts, haul-away, and property cleanup services across the Kansas City metro for homes, rentals, garages, and job sites. Call ${COMPANY.phone} for a free quote.`;
 export const metadata: Metadata = {
-  title: "Junk Removal Services",
-  description: `Junk removal in Kansas City for homes, rental properties, garages, estates, and job sites. Fast haul-away for furniture, appliances, debris, and clutter. Call ${COMPANY.phone} for a free quote.`,
+  title: pageTitle,
+  description: pageDescription,
+  alternates: {
+    canonical: "/services/junk-removal",
+  },
 };
 
 const services = [
@@ -35,10 +45,26 @@ const services = [
 ];
 
 export default function JunkRemovalPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Junk Removal", href: "/services/junk-removal" },
+  ];
+
   return (
     <>
+      <WebPageSchema title={pageTitle} description={pageDescription} path="/services/junk-removal" />
+      <BreadcrumbSchema items={breadcrumbs} />
+      <ServiceSchema
+        name="Kansas City Junk Removal & Property Cleanouts"
+        description={pageDescription}
+        path="/services/junk-removal"
+        serviceType="Junk removal and property cleanout services"
+      />
+      <FAQSchema items={SERVICE_PAGE_FAQS["junk-removal"]} />
+
       <section className="bg-primary-dark text-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Junk Removal</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Kansas City Junk Removal That Gets the Space Cleared Fast
@@ -93,6 +119,18 @@ export default function JunkRemovalPage() {
         </div>
       </section>
 
+      <FAQSection
+        title="Junk Removal FAQs"
+        intro="Common questions from homeowners, landlords, and property managers looking for junk removal and cleanout help in the Kansas City metro."
+        items={SERVICE_PAGE_FAQS["junk-removal"]}
+      />
+
+      <LocationLinkChips
+        title="Junk Removal Service Areas"
+        intro="We provide junk removal and cleanout support throughout these priority KC metro locations."
+        links={PRIORITY_CITY_LINKS}
+      />
+
       <section className="py-16 sm:py-20 bg-primary text-white text-center">
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="text-3xl font-bold mb-4">Need Junk Removed?</h2>
@@ -100,18 +138,22 @@ export default function JunkRemovalPage() {
             Tell us what needs to go and we&apos;ll give you a straightforward quote.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "junk_removal_service_page" }}
               className="premium-cta inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "junk_removal_service_page" }}
               className="inline-flex w-full sm:w-auto justify-center items-center px-8 py-3 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               Call {COMPANY.phone}
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

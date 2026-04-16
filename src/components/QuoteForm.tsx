@@ -1,15 +1,62 @@
 "use client";
 
-import { useState, type FocusEvent, type FormEvent, type MouseEvent } from "react";
+import { useEffect, useState, type FocusEvent, type FormEvent, type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
-import { SERVICE_TYPES } from "@/lib/constants";
+import { ANALYTICS_EVENTS, SERVICE_TYPES } from "@/lib/constants";
+import { trackEvent } from "@/lib/analytics";
 import type { LeadFormData, QuoteResponse } from "@/lib/types";
+
+const ATTRIBUTION_STORAGE_KEY = "kidds-attribution";
+
+type AttributionData = Pick<
+  LeadFormData,
+  | "utm_source"
+  | "utm_medium"
+  | "utm_campaign"
+  | "utm_term"
+  | "utm_content"
+  | "landing_page"
+  | "referrer_url"
+>;
 
 export default function QuoteForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [serverError, setServerError] = useState("");
+  const [attribution, setAttribution] = useState<AttributionData>({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_term: "",
+    utm_content: "",
+    landing_page: "",
+    referrer_url: "",
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const currentSearch = window.location.search;
+    const currentPage = `${window.location.pathname}${currentSearch}`;
+    const currentParams = new URLSearchParams(currentSearch);
+    const storedRaw = window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+    const stored = storedRaw ? (JSON.parse(storedRaw) as Partial<AttributionData>) : {};
+    const nextAttribution: AttributionData = {
+      utm_source: currentParams.get("utm_source") ?? stored.utm_source ?? "",
+      utm_medium: currentParams.get("utm_medium") ?? stored.utm_medium ?? "",
+      utm_campaign: currentParams.get("utm_campaign") ?? stored.utm_campaign ?? "",
+      utm_term: currentParams.get("utm_term") ?? stored.utm_term ?? "",
+      utm_content: currentParams.get("utm_content") ?? stored.utm_content ?? "",
+      landing_page: stored.landing_page ?? currentPage,
+      referrer_url: stored.referrer_url ?? document.referrer ?? "",
+    };
+
+    window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(nextAttribution));
+    setAttribution(nextAttribution);
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -35,6 +82,13 @@ export default function QuoteForm() {
       project_details: (fd.get("project_details") as string) ?? "",
       preferred_date: (fd.get("preferred_date") as string) ?? "",
       preferred_time: (fd.get("preferred_time") as string) ?? "",
+      utm_source: (fd.get("utm_source") as string) ?? "",
+      utm_medium: (fd.get("utm_medium") as string) ?? "",
+      utm_campaign: (fd.get("utm_campaign") as string) ?? "",
+      utm_term: (fd.get("utm_term") as string) ?? "",
+      utm_content: (fd.get("utm_content") as string) ?? "",
+      landing_page: (fd.get("landing_page") as string) ?? "",
+      referrer_url: (fd.get("referrer_url") as string) ?? "",
     };
 
     try {
@@ -45,16 +99,33 @@ export default function QuoteForm() {
       });
 
       const result: QuoteResponse = await res.json();
+      const landingPage = data.landing_page || (typeof window !== "undefined" ? window.location.pathname : "");
 
       if (result.ok) {
+        trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT_SUCCESS, {
+          service_type: data.service_type || "not_specified",
+          landing_page: landingPage,
+        });
         router.push("/thank-you");
       } else if (result.code === "VALIDATION_ERROR" && result.field_errors) {
         setFieldErrors(result.field_errors);
+        trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT_ERROR, {
+          error_type: "validation",
+          landing_page: landingPage,
+        });
       } else {
         setServerError("Something went wrong. Please call us or try again.");
+        trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT_ERROR, {
+          error_type: "server",
+          landing_page: landingPage,
+        });
       }
     } catch {
       setServerError("Network error. Please call us or try again.");
+      trackEvent(ANALYTICS_EVENTS.FORM_SUBMIT_ERROR, {
+        error_type: "network",
+        landing_page: data.landing_page || (typeof window !== "undefined" ? window.location.pathname : ""),
+      });
     } finally {
       setSubmitting(false);
     }
@@ -89,6 +160,13 @@ export default function QuoteForm() {
         <label htmlFor="company_website">Do not fill this in</label>
         <input type="text" id="company_website" name="company_website" tabIndex={-1} autoComplete="off" />
       </div>
+      <input type="hidden" name="utm_source" value={attribution.utm_source} readOnly />
+      <input type="hidden" name="utm_medium" value={attribution.utm_medium} readOnly />
+      <input type="hidden" name="utm_campaign" value={attribution.utm_campaign} readOnly />
+      <input type="hidden" name="utm_term" value={attribution.utm_term} readOnly />
+      <input type="hidden" name="utm_content" value={attribution.utm_content} readOnly />
+      <input type="hidden" name="landing_page" value={attribution.landing_page} readOnly />
+      <input type="hidden" name="referrer_url" value={attribution.referrer_url} readOnly />
 
       {serverError && (
         <div className="rounded-md bg-error/10 border border-error/30 p-4 text-sm text-error" role="alert">

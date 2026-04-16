@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { PRIORITY_CITY_PAGES } from "@/lib/local-seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://kiddscleanup.com";
@@ -10,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/junk-removal`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/lead-safe`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/water-mitigation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    ...PRIORITY_CITY_PAGES.map((city) => ({
+      url: `${baseUrl}/service-areas/${city.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },

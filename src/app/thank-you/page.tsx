@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { COMPANY } from "@/lib/constants";
+import TrackedLink from "@/components/TrackedLink";
+import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -26,9 +27,14 @@ export default function ThankYouPage() {
         </p>
         <p className="text-foreground/70 mb-8">
           Need something sooner? Call us directly at{" "}
-          <a href={COMPANY.phoneTel} className="text-primary font-semibold hover:text-accent transition-colors">
+          <TrackedLink
+            href={COMPANY.phoneTel}
+            eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+            eventParams={{ cta_location: "thank_you_page" }}
+            className="text-primary font-semibold hover:text-accent transition-colors"
+          >
             {COMPANY.phone}
-          </a>.
+          </TrackedLink>.
         </p>
         <Link
           href="/"

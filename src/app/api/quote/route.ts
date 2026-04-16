@@ -52,6 +52,8 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
   const address = data.project_address || "No project address provided.";
   const preferredDate = data.preferred_date || "No preferred date provided.";
   const preferredTime = data.preferred_time || "No preferred time provided.";
+  const landingPage = data.landing_page || "No landing page captured.";
+  const referrerUrl = data.referrer_url || "No referrer captured.";
 
   const text = [
     "New quote request received.",
@@ -64,6 +66,13 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     `Project Address: ${address}`,
     `Preferred Date: ${preferredDate}`,
     `Preferred Time: ${preferredTime}`,
+    `Landing Page: ${landingPage}`,
+    `Referrer: ${referrerUrl}`,
+    `UTM Source: ${data.utm_source || "Not provided"}`,
+    `UTM Medium: ${data.utm_medium || "Not provided"}`,
+    `UTM Campaign: ${data.utm_campaign || "Not provided"}`,
+    `UTM Term: ${data.utm_term || "Not provided"}`,
+    `UTM Content: ${data.utm_content || "Not provided"}`,
     "",
     "Project Details:",
     details,
@@ -79,6 +88,13 @@ async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Pr
     <p><strong>Project Address:</strong> ${escapeHtml(address)}</p>
     <p><strong>Preferred Date:</strong> ${escapeHtml(preferredDate)}</p>
     <p><strong>Preferred Time:</strong> ${escapeHtml(preferredTime)}</p>
+    <p><strong>Landing Page:</strong> ${escapeHtml(landingPage)}</p>
+    <p><strong>Referrer:</strong> ${escapeHtml(referrerUrl)}</p>
+    <p><strong>UTM Source:</strong> ${escapeHtml(data.utm_source || "Not provided")}</p>
+    <p><strong>UTM Medium:</strong> ${escapeHtml(data.utm_medium || "Not provided")}</p>
+    <p><strong>UTM Campaign:</strong> ${escapeHtml(data.utm_campaign || "Not provided")}</p>
+    <p><strong>UTM Term:</strong> ${escapeHtml(data.utm_term || "Not provided")}</p>
+    <p><strong>UTM Content:</strong> ${escapeHtml(data.utm_content || "Not provided")}</p>
     <p><strong>Project Details:</strong><br>${escapeHtml(details).replaceAll("\n", "<br>")}</p>
   `.trim();
 
@@ -141,6 +157,28 @@ function validateForm(data: LeadFormData): Record<string, string> {
     errors.project_details = "Project details must be under 2000 characters.";
   }
 
+  const shortTextFields = [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+  ] as const;
+
+  for (const field of shortTextFields) {
+    if (data[field] && data[field].length > 255) {
+      errors[field] = "Tracking value is too long.";
+    }
+  }
+
+  if (data.landing_page && data.landing_page.length > 500) {
+    errors.landing_page = "Landing page value is too long.";
+  }
+
+  if (data.referrer_url && data.referrer_url.length > 500) {
+    errors.referrer_url = "Referrer value is too long.";
+  }
+
   return errors;
 }
 
@@ -172,6 +210,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
       project_details: String(body.project_details ?? "").trim(),
       preferred_date: String(body.preferred_date ?? "").trim(),
       preferred_time: String(body.preferred_time ?? "").trim(),
+      utm_source: String(body.utm_source ?? "").trim(),
+      utm_medium: String(body.utm_medium ?? "").trim(),
+      utm_campaign: String(body.utm_campaign ?? "").trim(),
+      utm_term: String(body.utm_term ?? "").trim(),
+      utm_content: String(body.utm_content ?? "").trim(),
+      landing_page: String(body.landing_page ?? "").trim(),
+      referrer_url: String(body.referrer_url ?? "").trim(),
     };
 
     // Validate
@@ -193,7 +238,14 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
         email: data.email || null,
         service_type: data.service_type || null,
         status: "new",
-        source_page: request.headers.get("referer") || "",
+        source_page: data.landing_page || request.headers.get("referer") || "",
+        utm_source: data.utm_source || null,
+        utm_medium: data.utm_medium || null,
+        utm_campaign: data.utm_campaign || null,
+        utm_term: data.utm_term || null,
+        utm_content: data.utm_content || null,
+        landing_page: data.landing_page || null,
+        referrer_url: data.referrer_url || request.headers.get("referer") || null,
         ip_hash: hashValue(ip),
         user_agent: userAgent.slice(0, 500),
       })

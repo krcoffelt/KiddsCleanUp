@@ -1,42 +1,44 @@
 import Image from "next/image";
-import Link from "next/link";
+import LocationLinkChips from "@/components/LocationLinkChips";
 import ServiceCard from "@/components/ServiceCard";
+import TrackedLink from "@/components/TrackedLink";
 import TrustBadge from "@/components/TrustBadge";
-import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
+import { ANALYTICS_EVENTS, COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
+import { PRIORITY_CITY_LINKS } from "@/lib/local-seo";
 
 const PROJECT_PHOTOS = [
   {
-    src: "/images/photo-1.png",
+    src: "/images/photo-1.jpg",
     alt: "Cleanup and demolition job site from Kidd's Clean Up and Demo",
     className: "md:col-span-7 md:row-span-2 min-h-[260px] md:min-h-[520px]",
     sizes: "(min-width: 768px) 58vw, 100vw",
   },
   {
-    src: "/images/photo-2.png",
+    src: "/images/photo-2.jpg",
     alt: "Project photo showing Kidd's Clean Up and Demo on-site work",
     className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
-    src: "/images/photo-3.png",
+    src: "/images/photo-3.jpg",
     alt: "Cleanup project example from Kidd's Clean Up and Demo",
     className: "md:col-span-5 min-h-[210px]",
     sizes: "(min-width: 768px) 40vw, 100vw",
   },
   {
-    src: "/images/photo-4.png",
+    src: "/images/photo-4.jpg",
     alt: "Demolition and cleanup work completed by Kidd's Clean Up and Demo",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
-    src: "/images/photo-5.png",
+    src: "/images/photo-5.jpg",
     alt: "Kansas City cleanup and demolition project by Kidd's Clean Up and Demo",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
   },
   {
-    src: "/images/photo-6.png",
+    src: "/images/photo-6.jpg",
     alt: "Example of a Kidd's Clean Up and Demo project site",
     className: "md:col-span-4 min-h-[190px]",
     sizes: "(min-width: 768px) 32vw, 100vw",
@@ -61,30 +63,36 @@ function HeroSection() {
             that brings its own dumpsters and handles the full job.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName={ANALYTICS_EVENTS.CTA_REQUEST_QUOTE_CLICK}
+              eventParams={{ cta_location: "homepage_hero" }}
               className="premium-cta inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-md transition-colors text-lg"
             >
               Request a Free Quote
-            </Link>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.phoneTel}
+              eventName={ANALYTICS_EVENTS.CTA_CALL_CLICK}
+              eventParams={{ cta_location: "homepage_hero" }}
               className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-white hover:bg-surface text-primary font-bold rounded-md transition-colors text-lg border border-white"
             >
               <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
               </svg>
               {COMPANY.phone}
-            </a>
-            <a
+            </TrackedLink>
+            <TrackedLink
               href={COMPANY.textTel}
+              eventName={ANALYTICS_EVENTS.CTA_SMS_CLICK}
+              eventParams={{ cta_location: "homepage_hero" }}
               className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/15 text-white font-bold rounded-md transition-colors text-lg border border-white/20"
             >
               <svg className="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9A2.25 2.25 0 0118.75 10.5v4.5a2.25 2.25 0 01-2.25 2.25h-5.69a2.25 2.25 0 00-1.006.238L6 19.5v-1.875A2.25 2.25 0 013.75 15.375V12A3.75 3.75 0 017.5 8.25z" />
               </svg>
               Text Us 24/7
-            </a>
+            </TrackedLink>
           </div>
         </div>
         <div className="mt-7 grid max-w-4xl grid-cols-2 gap-x-4 gap-y-2.5 text-white/90 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8">
@@ -300,33 +308,27 @@ function ProjectGallerySection() {
 }
 
 function ServiceAreaSection() {
+  const linkedCityNames = new Set(
+    PRIORITY_CITY_LINKS.map((link) => link.label.split(",")[0])
+  );
+  const additionalCities = SERVICE_AREA_CITIES.filter(
+    (city) => !linkedCityNames.has(city.split(",")[0])
+  );
+
   return (
-    <section className="py-16 sm:py-24 bg-surface">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">
-              Proudly Serving the KC Metro
-            </h2>
-            <p className="text-foreground/70 max-w-xl leading-relaxed">
-              We work throughout the Kansas City metro for cleanup, demolition,
-              lead-safe work, and water mitigation. If you&apos;re nearby and do
-              not see your city listed, contact us. We may still be able to help.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {SERVICE_AREA_CITIES.map((city) => (
-              <span
-                key={city}
-                className="rounded-full border border-surface-dark bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-white"
-              >
-                {city}
-              </span>
-            ))}
-          </div>
-        </div>
+    <div className="bg-surface">
+      <LocationLinkChips
+        title="Proudly Serving the KC Metro"
+        intro="Explore our priority service-area pages for demolition, cleanouts, junk removal, lead-safe work, and water mitigation across the Kansas City metro."
+        links={PRIORITY_CITY_LINKS}
+      />
+      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+        <p className="text-sm text-foreground/60 leading-relaxed">
+          Additional nearby cities we commonly work in include {additionalCities.join(", ")}.
+          If you do not see your city listed, contact us. We may still be able to help.
+        </p>
       </div>
-    </section>
+    </div>
   );
 }
 
