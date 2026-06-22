@@ -118,3 +118,48 @@ export function ServiceSchema({
     />
   );
 }
+
+export function CityServiceSchema({
+  city,
+  state,
+  path,
+  description,
+  services,
+}: {
+  city: string;
+  state?: string;
+  path: string;
+  description: string;
+  services: string[];
+}) {
+  const cityLabel = state ? `${city}, ${state}` : city;
+
+  return (
+    <SchemaScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: `${cityLabel} cleanup, demolition, junk removal, and water mitigation services`,
+        description,
+        serviceType: services,
+        provider: {
+          "@type": "LocalBusiness",
+          name: COMPANY.name,
+          url: SITE_URL,
+          telephone: "+1-816-457-4363",
+        },
+        areaServed: {
+          "@type": "City",
+          name: cityLabel,
+          addressRegion: state,
+          addressCountry: "US",
+        },
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: toAbsoluteUrl(path),
+        },
+        url: toAbsoluteUrl(path),
+      }}
+    />
+  );
+}

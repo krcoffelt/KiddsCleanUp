@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
-import { BreadcrumbSchema, FAQSchema, WebPageSchema } from "@/components/PageSchemas";
+import { BreadcrumbSchema, CityServiceSchema, FAQSchema, WebPageSchema } from "@/components/PageSchemas";
 import ServiceCard from "@/components/ServiceCard";
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
@@ -116,6 +116,20 @@ export default async function CityServiceAreaPage({
         title={`${cityLabel} Demolition, Cleanouts & Junk Removal`}
         description={pageDescription}
         path={pagePath}
+      />
+      <CityServiceSchema
+        city={cityPage.city}
+        state={cityPage.state}
+        description={pageDescription}
+        path={pagePath}
+        services={[
+          "Residential demolition",
+          "Commercial demolition",
+          "Junk removal",
+          "Lead-safe work",
+          "Water mitigation",
+          "Property cleanouts",
+        ]}
       />
       <BreadcrumbSchema items={breadcrumbs} />
       <FAQSchema items={cityPage.faq} />
