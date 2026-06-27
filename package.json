@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seo:validate": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.15.8",

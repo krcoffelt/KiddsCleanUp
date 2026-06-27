@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { PRIORITY_CITY_PAGES } from "@/lib/local-seo";
+import { CITY_SERVICE_PAGES, SPECIALTY_SERVICE_PAGES } from "@/lib/seo-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://kiddscleanup.com";
@@ -11,11 +12,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/junk-removal`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/lead-safe`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/services/water-mitigation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    ...SPECIALTY_SERVICE_PAGES.map((page) => ({
+      url: `${baseUrl}/services/${page.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     ...PRIORITY_CITY_PAGES.map((city) => ({
       url: `${baseUrl}/service-areas/${city.slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.85,
+    })),
+    ...CITY_SERVICE_PAGES.map((page) => ({
+      url: `${baseUrl}/${page.service}/${page.citySlug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },

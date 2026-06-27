@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
 import LocationLinkChips from "@/components/LocationLinkChips";
@@ -6,16 +5,15 @@ import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/com
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Water Mitigation";
 const pageDescription = `Emergency water mitigation, extraction, drying, and moisture control across the Kansas City metro for leaks, flooding, and burst pipes. Call ${COMPANY.phone} for a free quote.`;
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
-  alternates: {
-    canonical: "/services/water-mitigation",
-  },
-};
+  path: "/services/water-mitigation",
+});
 
 const services = [
   {
@@ -41,6 +39,34 @@ const services = [
   {
     title: "Property Stabilization",
     description: "Immediate drying and moisture control that helps reduce long-term damage and prepares the property for repairs.",
+  },
+];
+
+const waterDamageScenarios = [
+  {
+    title: "Water Damage Cleanup",
+    description:
+      "Remove standing water, damaged contents, and wet debris so the affected area can be dried and stabilized.",
+  },
+  {
+    title: "Flood Cleanup",
+    description:
+      "Cleanup support after indoor flooding, storm intrusion, overflows, and water that has spread through floors or lower levels.",
+  },
+  {
+    title: "Burst Pipe Cleanup",
+    description:
+      "Fast response after pipe breaks to remove water, start drying, and limit additional damage.",
+  },
+  {
+    title: "Water Extraction",
+    description:
+      "Extraction of standing water from floors, basements, crawlspaces, and affected rooms before deeper drying begins.",
+  },
+  {
+    title: "Basement Water Cleanup",
+    description:
+      "Basement cleanup and water removal for leaks, backups, appliance failures, and storm-related water intrusion.",
   },
 ];
 
@@ -94,6 +120,32 @@ export default function WaterMitigationPage() {
       </section>
 
       <section className="py-16 sm:py-24 bg-surface">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Water Damage Cleanup, Flood Cleanup, and Basement Water Removal
+            </h2>
+            <p className="text-foreground/70 leading-relaxed">
+              Water mitigation searches often describe the event, not the service.
+              We help with the practical cleanup and drying steps after leaks,
+              floods, burst pipes, and basement water problems.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+            {waterDamageScenarios.map((scenario) => (
+              <div
+                key={scenario.title}
+                className="rounded-xl border border-surface-dark bg-white p-6 shadow-sm"
+              >
+                <h3 className="text-lg font-bold text-primary-dark mb-2">{scenario.title}</h3>
+                <p className="text-sm text-foreground/70 leading-relaxed">{scenario.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-primary-dark mb-6">

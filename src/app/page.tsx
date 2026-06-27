@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LocationLinkChips from "@/components/LocationLinkChips";
+import { WebPageSchema } from "@/components/PageSchemas";
 import ServiceCard from "@/components/ServiceCard";
 import TrackedLink from "@/components/TrackedLink";
 import TrustBadge from "@/components/TrustBadge";
@@ -197,6 +198,81 @@ function ServicesSection() {
   );
 }
 
+function LocalAnswerSection() {
+  return (
+    <section className="py-14 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="text-accent font-semibold mb-2">Kansas City Cleanup Company</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">
+              Cleanup, Demolition, Junk Removal, and Haul-Away From One Local Crew
+            </h2>
+          </div>
+          <div className="space-y-4 text-foreground/75 leading-relaxed">
+            <p>
+              Kidd&apos;s Clean Up and Demo is a Kansas City cleanup and demolition
+              company serving homeowners, landlords, businesses, property managers,
+              and contractors across the KC metro.
+            </p>
+            <p>
+              We handle residential demolition, commercial demolition, junk removal,
+              property cleanouts, lead-safe work, water mitigation, and debris
+              haul-away with owner-operated communication and our own dumpsters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SpecialtyLinksSection() {
+  const links = [
+    { label: "Demolition Services", href: "/services/demolition" },
+    { label: "Interior Demolition", href: "/services/interior-demolition" },
+    { label: "Garage Demolition", href: "/services/garage-demolition" },
+    { label: "House Demolition", href: "/services/house-demolition" },
+    { label: "Shed Demolition", href: "/services/shed-demolition" },
+    { label: "Deck Removal", href: "/services/deck-removal" },
+    { label: "Concrete Removal", href: "/services/concrete-removal" },
+    { label: "Cleanout Services", href: "/services/cleanouts" },
+    { label: "Furniture Removal", href: "/services/furniture-removal" },
+    { label: "Appliance Removal", href: "/services/appliance-removal" },
+    { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
+    { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+    { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+    { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
+  ];
+
+  return (
+    <section className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary-dark mb-4">
+            More Ways We Can Clear the Space
+          </h2>
+          <p className="text-foreground/70 leading-relaxed">
+            Some jobs need a specific type of removal or cleanout. These pages
+            break down the common projects we quote across Kansas City.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {links.map((link) => (
+            <TrackedLink
+              key={link.href}
+              href={link.href}
+              className="rounded-xl border border-surface-dark bg-white px-5 py-4 font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+            >
+              {link.label}
+            </TrackedLink>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TrustSection() {
   return (
     <section className="py-16 sm:py-24">
@@ -335,8 +411,15 @@ function ServiceAreaSection() {
 export default function HomePage() {
   return (
     <>
+      <WebPageSchema
+        title="Kansas City Demolition, Cleanouts & Junk Removal"
+        description="Kidd's Clean Up and Demo provides residential and commercial demolition, junk removal, cleanouts, lead-safe work, and water mitigation across the Kansas City metro."
+        path="/"
+      />
       <HeroSection />
+      <LocalAnswerSection />
       <ServicesSection />
+      <SpecialtyLinksSection />
       <ProjectGallerySection />
       <TrustSection />
       <ServiceAreaSection />

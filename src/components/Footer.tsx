@@ -15,6 +15,23 @@ const FOOTER_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+const POPULAR_SERVICE_LINKS = [
+  { label: "Demolition Services", href: "/services/demolition" },
+  { label: "Garage Demolition", href: "/services/garage-demolition" },
+  { label: "House Demolition", href: "/services/house-demolition" },
+  { label: "Interior Demo", href: "/services/interior-demolition" },
+  { label: "Deck Removal", href: "/services/deck-removal" },
+  { label: "Concrete Removal", href: "/services/concrete-removal" },
+  { label: "Furniture Removal", href: "/services/furniture-removal" },
+  { label: "Appliance Removal", href: "/services/appliance-removal" },
+  { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
+  { label: "Cleanouts", href: "/services/cleanouts" },
+  { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+  { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+  { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
+  { label: "Construction Debris", href: "/services/construction-debris-removal" },
+] as const;
+
 export default function Footer() {
   return (
     <footer className="bg-primary-dark text-white">
@@ -102,6 +119,21 @@ export default function Footer() {
             </h3>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
               {FOOTER_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-sm font-bold uppercase tracking-wider mt-6 mb-3 text-white/50">
+              Popular Services
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {POPULAR_SERVICE_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

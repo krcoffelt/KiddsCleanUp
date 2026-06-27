@@ -12,6 +12,7 @@ import {
   PRIORITY_CITY_PAGES,
   buildServiceAreaBreadcrumbs,
 } from "@/lib/local-seo";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const SERVICE_OVERVIEW = [
   {
@@ -60,6 +61,20 @@ const SERVICE_OVERVIEW = [
   },
 ];
 
+const CITY_SERVICE_SLUGS: Record<string, string> = {
+  "overland-park": "overland-park",
+  olathe: "olathe",
+  shawnee: "shawnee-ks",
+  lenexa: "lenexa",
+};
+
+const COMMON_SERVICE_LINKS = [
+  { label: "Demolition Services", href: "/services/demolition" },
+  { label: "Cleanout Services", href: "/services/cleanouts" },
+  { label: "Furniture Removal", href: "/services/furniture-removal" },
+  { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+];
+
 function getCityPage(slug: string) {
   return PRIORITY_CITY_PAGES.find((city) => city.slug === slug);
 }
@@ -82,13 +97,11 @@ export function generateMetadata({
 
     const cityLabel = cityPage.state ? `${cityPage.city}, ${cityPage.state}` : cityPage.city;
 
-    return {
+    return buildPageMetadata({
       title: `${cityLabel} Demolition, Cleanouts & Junk Removal`,
       description: `Local demolition, cleanouts, junk removal, lead-safe work, and water mitigation in ${cityLabel}. Call Kidd's Clean Up and Demo for a free quote.`,
-      alternates: {
-        canonical: `/service-areas/${cityPage.slug}`,
-      },
-    };
+      path: `/service-areas/${cityPage.slug}`,
+    });
   });
 }
 
@@ -109,6 +122,7 @@ export default async function CityServiceAreaPage({
   const breadcrumbs = buildServiceAreaBreadcrumbs(cityLabel, pagePath);
   const pageDescription = `Local demolition, cleanouts, junk removal, lead-safe work, and water mitigation in ${cityLabel}. Call Kidd's Clean Up and Demo for a free quote.`;
   const relatedCities = PRIORITY_CITY_LINKS.filter((city) => city.href !== pagePath).slice(0, 4);
+  const cityServiceSlug = CITY_SERVICE_SLUGS[cityPage.slug];
 
   return (
     <>
@@ -233,6 +247,43 @@ export default async function CityServiceAreaPage({
             </div>
             {relatedCities.length > 0 && (
               <div className="mt-8 border-t border-surface-dark pt-6">
+                <div className="mb-6">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-primary/60 mb-3">
+                    Common Service Pages
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {COMMON_SERVICE_LINKS.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="rounded-full border border-surface-dark bg-surface px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {cityServiceSlug && (
+                  <div className="mb-6">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-primary/60 mb-3">
+                      Focused {cityPage.city} Services
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      <Link
+                        href={`/junk-removal/${cityServiceSlug}`}
+                        className="rounded-full border border-surface-dark bg-surface px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                      >
+                        {cityPage.city} Junk Removal
+                      </Link>
+                      <Link
+                        href={`/demolition/${cityServiceSlug}`}
+                        className="rounded-full border border-surface-dark bg-surface px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                      >
+                        {cityPage.city} Demolition
+                      </Link>
+                    </div>
+                  </div>
+                )}
                 <h3 className="text-sm font-bold uppercase tracking-wider text-primary/60 mb-3">
                   Nearby Service Areas
                 </h3>

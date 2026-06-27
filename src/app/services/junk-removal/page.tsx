@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
 import LocationLinkChips from "@/components/LocationLinkChips";
@@ -6,16 +6,15 @@ import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/com
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Junk Removal & Property Cleanouts";
 const pageDescription = `Junk removal, move-out cleanouts, haul-away, and property cleanup services across the Kansas City metro for homes, rentals, garages, and job sites. Call ${COMPANY.phone} for a free quote.`;
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
-  alternates: {
-    canonical: "/services/junk-removal",
-  },
-};
+  path: "/services/junk-removal",
+});
 
 const services = [
   {
@@ -42,6 +41,45 @@ const services = [
     title: "Construction & Renovation Debris",
     description: "Haul-away for leftover material, broken fixtures, packaging, and debris after remodels or demolition work.",
   },
+];
+
+const itemRemovalServices = [
+  "Furniture removal",
+  "Appliance removal",
+  "Mattress removal",
+  "Hot tub removal",
+  "Yard debris removal",
+  "Bulk trash pickup alternatives",
+  "General haul-away junk",
+  "Move-out junk removal",
+];
+
+const cleanoutLinks = [
+  { label: "House Cleanouts", href: "/services/house-cleanouts" },
+  { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+  { label: "Garage Cleanouts", href: "/services/garage-cleanouts" },
+  { label: "Basement Cleanouts", href: "/services/basement-cleanouts" },
+  { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+  { label: "Rental Property Cleanouts", href: "/services/rental-property-cleanouts" },
+  { label: "Foreclosure Cleanouts", href: "/services/foreclosure-cleanouts" },
+];
+
+const itemRemovalLinks = [
+  { label: "Furniture Removal", href: "/services/furniture-removal" },
+  { label: "Appliance Removal", href: "/services/appliance-removal" },
+  { label: "Mattress Removal", href: "/services/mattress-removal" },
+  { label: "Yard Debris Removal", href: "/services/yard-debris-removal" },
+  { label: "Hot Tub Removal", href: "/services/hot-tub-removal" },
+  { label: "Trash Removal", href: "/services/trash-removal" },
+  { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
+  { label: "Haul Away Junk", href: "/services/haul-away-junk" },
+];
+
+const cityJunkRemovalLinks = [
+  { label: "Overland Park Junk Removal", href: "/junk-removal/overland-park" },
+  { label: "Olathe Junk Removal", href: "/junk-removal/olathe" },
+  { label: "Shawnee Junk Removal", href: "/junk-removal/shawnee-ks" },
+  { label: "Lenexa Junk Removal", href: "/junk-removal/lenexa" },
 ];
 
 export default function JunkRemovalPage() {
@@ -94,6 +132,33 @@ export default function JunkRemovalPage() {
       </section>
 
       <section className="py-16 sm:py-24 bg-surface">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <div>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Furniture, Appliance, Mattress, Yard Debris, and Bulk Junk Removal
+            </h2>
+            <p className="text-foreground/70 leading-relaxed">
+              Many junk removal calls are item-specific. We remove bulky items,
+              outdoor debris, and leftover contents from homes, garages, rentals,
+              and job sites throughout the Kansas City metro.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {itemRemovalServices.map((item) => (
+              <div key={item} className="rounded-xl border border-surface-dark bg-white p-5 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  <span className="font-semibold text-primary-dark">{item}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-primary-dark mb-6">
@@ -115,6 +180,76 @@ export default function JunkRemovalPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 bg-surface">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Cleanout and Haul-Away Pages
+            </h2>
+            <p className="text-foreground/70 leading-relaxed mb-6">
+              If your project is bigger than a single pickup, these cleanout pages
+              explain the most common property cleanup situations we handle.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {cleanoutLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg border border-surface-dark bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Item Removal Pages
+            </h2>
+            <p className="text-foreground/70 leading-relaxed mb-6">
+              For item-specific pickup and haul-away jobs, these pages map to
+              the common searches customers use when they know exactly what needs to go.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {itemRemovalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg border border-surface-dark bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-8">
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Priority Junk Removal Service Areas
+            </h2>
+            <p className="text-foreground/70 leading-relaxed mb-6">
+              We also provide dedicated local junk removal support for priority
+              Kansas-side communities near the KC metro.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {cityJunkRemovalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg border border-surface-dark bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

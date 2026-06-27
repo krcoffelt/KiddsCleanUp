@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
 import LocationLinkChips from "@/components/LocationLinkChips";
@@ -6,16 +5,15 @@ import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/com
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Lead-Safe Removal & Demolition";
 const pageDescription = `Lead-safe removal, EPA-conscious demolition, and hazard-focused cleanup services across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
-  alternates: {
-    canonical: "/services/lead-safe",
-  },
-};
+  path: "/services/lead-safe",
+});
 
 const services = [
   {
@@ -33,6 +31,34 @@ const services = [
   {
     title: "Containment & Disposal",
     description: "Proper containment of lead dust and debris during work, with compliant disposal at authorized facilities.",
+  },
+];
+
+const leadSearchTopics = [
+  {
+    title: "Lead Paint Removal",
+    description:
+      "Removal work planned around older painted surfaces where lead-containing paint may be present.",
+  },
+  {
+    title: "Lead Remediation Support",
+    description:
+      "Containment-minded removal and cleanup support for projects where lead hazards need to be handled carefully.",
+  },
+  {
+    title: "Lead Removal Contractor Searches",
+    description:
+      "Property owners often search for a contractor who can discuss safe removal, demolition, containment, and disposal steps.",
+  },
+  {
+    title: "Lead Abatement Planning",
+    description:
+      "When a project requires formal abatement direction, we help clarify the demolition and cleanup scope without overstating unsupported claims.",
+  },
+  {
+    title: "Lead Paint Contractor Coordination",
+    description:
+      "We can coordinate the removal side of a project with testing, property contacts, and other trades when needed.",
   },
 ];
 
@@ -102,8 +128,33 @@ export default function LeadSafePage() {
         </div>
       </section>
 
-      {/* Our approach */}
       <section className="py-16 sm:py-24 bg-surface">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Lead Paint Removal, Remediation, and Contractor Support
+            </h2>
+            <p className="text-foreground/70 leading-relaxed">
+              Lead-related projects need careful planning, clear scope, and
+              practical handling from the first walkthrough through cleanup and disposal.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+            {leadSearchTopics.map((topic) => (
+              <div
+                key={topic.title}
+                className="rounded-xl border border-surface-dark bg-white p-6 shadow-sm"
+              >
+                <h3 className="text-lg font-bold text-primary-dark mb-2">{topic.title}</h3>
+                <p className="text-sm text-foreground/70 leading-relaxed">{topic.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our approach */}
+      <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-primary-dark mb-6 text-center">

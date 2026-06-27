@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
 import LocationLinkChips from "@/components/LocationLinkChips";
@@ -6,16 +6,15 @@ import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/com
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
+import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Residential Demo & Cleanouts";
 const pageDescription = `Residential demolition, home cleanouts, garage and shed removal, deck demo, and interior tear-out services across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
-  alternates: {
-    canonical: "/services/residential",
-  },
-};
+  path: "/services/residential",
+});
 
 const services = [
   {
@@ -42,6 +41,16 @@ const services = [
     title: "Construction Debris Cleanup",
     description: "Post-construction or post-renovation cleanup including debris removal, sweeping, and site restoration.",
   },
+];
+
+const demolitionServiceLinks = [
+  { label: "Demolition Services", href: "/services/demolition" },
+  { label: "Interior Demolition", href: "/services/interior-demolition" },
+  { label: "Garage Demolition", href: "/services/garage-demolition" },
+  { label: "House Demolition", href: "/services/house-demolition" },
+  { label: "Shed Demolition", href: "/services/shed-demolition" },
+  { label: "Deck Removal", href: "/services/deck-removal" },
+  { label: "Concrete Removal", href: "/services/concrete-removal" },
 ];
 
 export default function ResidentialPage() {
@@ -94,8 +103,33 @@ export default function ResidentialPage() {
         </div>
       </section>
 
-      {/* Why us */}
       <section className="py-16 sm:py-24 bg-surface">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-8">
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              Residential Demolition Services We Quote Often
+            </h2>
+            <p className="text-foreground/70 leading-relaxed">
+              These focused pages cover common residential demolition projects
+              and give each job type clearer detail before you request a quote.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {demolitionServiceLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-lg border border-surface-dark bg-white px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why us */}
+      <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-primary-dark mb-6">
