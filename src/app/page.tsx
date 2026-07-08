@@ -241,8 +241,13 @@ function SpecialtyLinksSection() {
     { label: "Appliance Removal", href: "/services/appliance-removal" },
     { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
     { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+    { label: "Basement Cleanouts", href: "/services/basement-cleanouts" },
     { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
     { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
+    { label: "Water Damage Cleanup", href: "/services/water-damage-cleanup" },
+    { label: "Flood Cleanup", href: "/services/flood-cleanup" },
+    { label: "Burst Pipe Cleanup", href: "/services/burst-pipe-cleanup" },
+    { label: "Water Extraction", href: "/services/water-extraction" },
   ];
 
   return (

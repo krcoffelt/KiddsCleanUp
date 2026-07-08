@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FAQSection from "@/components/FAQSection";
 import LocationLinkChips from "@/components/LocationLinkChips";
+import Link from "next/link";
 import { BreadcrumbSchema, FAQSchema, ServiceSchema, WebPageSchema } from "@/components/PageSchemas";
 import TrackedLink from "@/components/TrackedLink";
 import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
@@ -45,26 +46,31 @@ const services = [
 const waterDamageScenarios = [
   {
     title: "Water Damage Cleanup",
+    href: "/services/water-damage-cleanup",
     description:
       "Remove standing water, damaged contents, and wet debris so the affected area can be dried and stabilized.",
   },
   {
     title: "Flood Cleanup",
+    href: "/services/flood-cleanup",
     description:
       "Cleanup support after indoor flooding, storm intrusion, overflows, and water that has spread through floors or lower levels.",
   },
   {
     title: "Burst Pipe Cleanup",
+    href: "/services/burst-pipe-cleanup",
     description:
       "Fast response after pipe breaks to remove water, start drying, and limit additional damage.",
   },
   {
     title: "Water Extraction",
+    href: "/services/water-extraction",
     description:
       "Extraction of standing water from floors, basements, crawlspaces, and affected rooms before deeper drying begins.",
   },
   {
     title: "Basement Water Cleanup",
+    href: "/services/basement-water-cleanup",
     description:
       "Basement cleanup and water removal for leaks, backups, appliance failures, and storm-related water intrusion.",
   },
@@ -133,13 +139,14 @@ export default function WaterMitigationPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
             {waterDamageScenarios.map((scenario) => (
-              <div
+              <Link
                 key={scenario.title}
+                href={scenario.href}
                 className="rounded-xl border border-surface-dark bg-white p-6 shadow-sm"
               >
                 <h3 className="text-lg font-bold text-primary-dark mb-2">{scenario.title}</h3>
                 <p className="text-sm text-foreground/70 leading-relaxed">{scenario.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

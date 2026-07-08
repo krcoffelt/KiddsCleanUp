@@ -88,6 +88,49 @@ export default function CityServiceLandingPage({ page }: { page: CityServicePage
         </div>
       </section>
 
+      {(page.localExamples?.length || page.quoteFactors?.length) && (
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+            {page.localExamples && page.localExamples.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-bold text-primary-dark mb-4">
+                  Local {serviceLabel} Work in {page.city}
+                </h2>
+                <div className="grid gap-4">
+                  {page.localExamples.map((example) => (
+                    <div
+                      key={example.title}
+                      className="rounded-xl border border-surface-dark bg-white p-5 shadow-sm"
+                    >
+                      <h3 className="text-lg font-bold text-primary-dark mb-2">{example.title}</h3>
+                      <p className="text-sm leading-relaxed text-foreground/70">{example.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {page.quoteFactors && page.quoteFactors.length > 0 && (
+              <div className="rounded-2xl border border-surface-dark bg-surface p-6">
+                <h2 className="text-2xl font-bold text-primary-dark mb-4">
+                  What Shapes the Quote
+                </h2>
+                <ul className="space-y-3">
+                  {page.quoteFactors.map((factor) => (
+                    <li key={factor} className="flex items-start gap-3">
+                      <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      <span className="text-sm leading-relaxed text-foreground/80">{factor}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       <section className="bg-surface py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
@@ -129,6 +172,24 @@ export default function CityServiceLandingPage({ page }: { page: CityServicePage
                 {siblingLabel}
               </Link>
             </div>
+            {page.relatedJobLinks && page.relatedJobLinks.length > 0 && (
+              <div className="mt-6 border-t border-surface-dark pt-6">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-primary/60 mb-3">
+                  Related Jobs
+                </h3>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {page.relatedJobLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="rounded-lg border border-surface-dark bg-surface px-4 py-3 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -170,4 +231,3 @@ export default function CityServiceLandingPage({ page }: { page: CityServicePage
     </>
   );
 }
-

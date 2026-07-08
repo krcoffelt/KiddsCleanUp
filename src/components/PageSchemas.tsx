@@ -1,11 +1,17 @@
-import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
+import { SERVICE_AREA_CITIES } from "@/lib/constants";
 import type { BreadcrumbItem } from "@/components/Breadcrumbs";
 import type { FAQItem } from "@/components/FAQSection";
 
 const SITE_URL = "https://kiddscleanup.com";
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const BUSINESS_ID = `${SITE_URL}/#business`;
 
 function toAbsoluteUrl(path: string) {
   return path.startsWith("http") ? path : `${SITE_URL}${path}`;
+}
+
+function schemaId(path: string, suffix: string) {
+  return `${toAbsoluteUrl(path)}#${suffix}`;
 }
 
 function SchemaScript({ data }: { data: unknown }) {
@@ -31,13 +37,17 @@ export function WebPageSchema({
       data={{
         "@context": "https://schema.org",
         "@type": "WebPage",
+        "@id": schemaId(path, "webpage"),
         name: title,
         description,
         url: toAbsoluteUrl(path),
         isPartOf: {
           "@type": "WebSite",
-          name: COMPANY.name,
-          url: SITE_URL,
+          "@id": WEBSITE_ID,
+        },
+        about: {
+          "@type": "LocalBusiness",
+          "@id": BUSINESS_ID,
         },
       }}
     />
@@ -50,6 +60,7 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
       data={{
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        "@id": schemaId(items[items.length - 1]?.href ?? "/", "breadcrumbs"),
         itemListElement: items.map((item, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -96,14 +107,13 @@ export function ServiceSchema({
       data={{
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": schemaId(path, "service"),
         name,
         description,
         serviceType,
         provider: {
           "@type": "LocalBusiness",
-          name: COMPANY.name,
-          url: SITE_URL,
-          telephone: "+1-816-457-4363",
+          "@id": BUSINESS_ID,
         },
         areaServed: SERVICE_AREA_CITIES.map((city) => ({
           "@type": "City",
@@ -139,14 +149,13 @@ export function CityServiceSchema({
       data={{
         "@context": "https://schema.org",
         "@type": "Service",
+        "@id": schemaId(path, "service"),
         name: `${cityLabel} cleanup, demolition, junk removal, and water mitigation services`,
         description,
         serviceType: services,
         provider: {
           "@type": "LocalBusiness",
-          name: COMPANY.name,
-          url: SITE_URL,
-          telephone: "+1-816-457-4363",
+          "@id": BUSINESS_ID,
         },
         areaServed: {
           "@type": "City",

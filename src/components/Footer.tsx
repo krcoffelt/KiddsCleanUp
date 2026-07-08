@@ -26,10 +26,24 @@ const POPULAR_SERVICE_LINKS = [
   { label: "Appliance Removal", href: "/services/appliance-removal" },
   { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
   { label: "Cleanouts", href: "/services/cleanouts" },
+  { label: "Basement Cleanouts", href: "/services/basement-cleanouts" },
   { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
   { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
   { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
   { label: "Construction Debris", href: "/services/construction-debris-removal" },
+  { label: "Water Damage Cleanup", href: "/services/water-damage-cleanup" },
+  { label: "Burst Pipe Cleanup", href: "/services/burst-pipe-cleanup" },
+] as const;
+
+const CITY_SERVICE_LINKS = [
+  { label: "Overland Park Junk Removal", href: "/junk-removal/overland-park" },
+  { label: "Olathe Junk Removal", href: "/junk-removal/olathe" },
+  { label: "Shawnee Junk Removal", href: "/junk-removal/shawnee-ks" },
+  { label: "Lenexa Junk Removal", href: "/junk-removal/lenexa" },
+  { label: "Overland Park Demolition", href: "/demolition/overland-park" },
+  { label: "Olathe Demolition", href: "/demolition/olathe" },
+  { label: "Shawnee Demolition", href: "/demolition/shawnee-ks" },
+  { label: "Lenexa Demolition", href: "/demolition/lenexa" },
 ] as const;
 
 export default function Footer() {
@@ -152,6 +166,21 @@ export default function Footer() {
             </h3>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
               {PRIORITY_CITY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-sm font-bold uppercase tracking-wider mt-6 mb-3 text-white/50">
+              Focused City Services
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {CITY_SERVICE_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
