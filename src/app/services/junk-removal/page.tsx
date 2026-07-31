@@ -82,6 +82,36 @@ const cityJunkRemovalLinks = [
   { label: "Lenexa Junk Removal", href: "/junk-removal/lenexa" },
 ];
 
+const quoteFactors = [
+  {
+    title: "Amount and Type of Material",
+    description:
+      "The number of items, approximate load volume, weight, and disposal needs establish the basic scope.",
+  },
+  {
+    title: "Where Items Are Located",
+    description:
+      "Inside pickup, stairs, basements, elevators, narrow doors, and carrying distance affect labor and loading time.",
+  },
+  {
+    title: "Handling Requirements",
+    description:
+      "Very heavy pieces, disassembly, disconnected appliances, and mixed debris should be identified before scheduling.",
+  },
+  {
+    title: "Cleanout or Single Pickup",
+    description:
+      "A few bulky items are scoped differently from a whole-home, estate, rental, garage, or commercial cleanout.",
+  },
+];
+
+const pickupDetails = [
+  "Share photos and the approximate number of items when requesting a quote.",
+  "Tell us whether items are inside, outside, upstairs, or in a basement.",
+  "Appliances should be empty and disconnected unless different preparation is confirmed in the quote.",
+  "Identify liquids, chemicals, paint, fuel, very heavy material, or anything that may require regulated disposal.",
+];
+
 export default function JunkRemovalPage() {
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -127,6 +157,46 @@ export default function JunkRemovalPage() {
                 <p className="text-sm text-foreground/70 leading-relaxed">{service.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-surface-dark bg-surface py-16 sm:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
+          <div>
+            <h2 className="text-3xl font-bold text-primary-dark mb-4">
+              What Shapes a Junk Removal Quote
+            </h2>
+            <p className="max-w-3xl text-foreground/70 leading-relaxed mb-8">
+              A useful quote starts with the material, access, and handling details.
+              Clear information up front helps us scope the crew, loading time, and
+              haul-away needs accurately.
+            </p>
+            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              {quoteFactors.map((factor) => (
+                <div key={factor.title} className="border-l-2 border-accent pl-4">
+                  <h3 className="font-bold text-primary-dark mb-1">{factor.title}</h3>
+                  <p className="text-sm text-foreground/70 leading-relaxed">
+                    {factor.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-primary-dark mb-4">
+              What to Tell Us Before Pickup
+            </h2>
+            <ul className="space-y-4">
+              {pickupDetails.map((detail) => (
+                <li key={detail} className="flex items-start gap-3">
+                  <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  <span className="text-foreground/80 leading-relaxed">{detail}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

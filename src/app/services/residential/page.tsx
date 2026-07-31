@@ -8,8 +8,8 @@ import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
-const pageTitle = "Kansas City Residential Demo & Cleanouts";
-const pageDescription = `Residential demolition, home cleanouts, garage and shed removal, deck demo, and interior tear-out services across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
+const pageTitle = "Residential Demolition Kansas City";
+const pageDescription = `Residential demolition in Kansas City for interior tear-outs, garage and shed removal, deck demo, concrete removal, home cleanouts, and debris haul-away. Call ${COMPANY.phone} for a free quote.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
@@ -64,7 +64,7 @@ export default function ResidentialPage() {
       <WebPageSchema title={pageTitle} description={pageDescription} path="/services/residential" />
       <BreadcrumbSchema items={breadcrumbs} />
       <ServiceSchema
-        name="Kansas City Residential Demo & Cleanouts"
+        name="Residential Demolition Kansas City"
         description={pageDescription}
         path="/services/residential"
         serviceType="Residential demolition and cleanout services"
@@ -77,11 +77,12 @@ export default function ResidentialPage() {
           <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Residential Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Kansas City Residential Cleanup &amp; Demolition
+            Residential Demolition in Kansas City
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
-            From whole-home cleanouts to selective interior demolition, we help
-            KC homeowners reclaim their space with honest pricing and clean results.
+            We help Kansas City homeowners with interior tear-outs, garage and
+            shed demolition, deck removal, concrete removal, debris haul-away,
+            and cleanouts connected to residential projects.
           </p>
         </div>
       </section>

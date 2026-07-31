@@ -8,7 +8,7 @@ import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
-const pageTitle = "Kansas City Commercial Demolition & Cleanup";
+const pageTitle = "Commercial Demolition Kansas City";
 const pageDescription = `Commercial demolition, office buildout demo, warehouse cleanup, retail strip-outs, and site prep across the Kansas City metro. Call ${COMPANY.phone} for a free quote.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
@@ -63,7 +63,7 @@ export default function CommercialPage() {
       <WebPageSchema title={pageTitle} description={pageDescription} path="/services/commercial" />
       <BreadcrumbSchema items={breadcrumbs} />
       <ServiceSchema
-        name="Kansas City Commercial Demolition & Cleanup"
+        name="Commercial Demolition Kansas City"
         description={pageDescription}
         path="/services/commercial"
         serviceType="Commercial demolition and cleanup services"
@@ -76,11 +76,12 @@ export default function CommercialPage() {
           <Breadcrumbs items={breadcrumbs} theme="dark" className="mb-6" />
           <p className="text-accent font-semibold mb-2">Commercial Services</p>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Kansas City Commercial Cleanup &amp; Demolition
+            Commercial Demolition in Kansas City
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
-            Reliable, efficient commercial demolition and cleanup for businesses,
-            contractors, and property managers across the Kansas City metro.
+            Selective demolition, buildout removal, retail strip-outs, concrete
+            removal, debris hauling, and site cleanup for Kansas City businesses,
+            contractors, landlords, and property managers.
           </p>
         </div>
       </section>

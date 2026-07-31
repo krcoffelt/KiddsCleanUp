@@ -88,33 +88,45 @@ function createItemRemovalPage({
   eyebrow,
   item,
   examples,
+  description,
+  intro,
+  commonJobs,
+  jobDetails,
+  whyUs,
+  faq,
 }: {
   slug: string;
   title: string;
   eyebrow: string;
   item: string;
   examples: string[];
+  description?: string;
+  intro?: string;
+  commonJobs?: string[];
+  jobDetails?: { title: string; description: string }[];
+  whyUs?: string[];
+  faq?: FAQItem[];
 }): SpecialtyServicePageData {
   const keyword = `${item.toLowerCase()} kansas city`;
 
   return {
     slug,
     title,
-    description: `${eyebrow} in Kansas City for ${examples.slice(0, 3).join(", ")}, loading, haul-away, cleanup, and property cleanout support.`,
+    description: description ?? `${eyebrow} in Kansas City for ${examples.slice(0, 3).join(", ")}, loading, haul-away, cleanup, and property cleanout support.`,
     eyebrow,
     h1: `${eyebrow} in Kansas City`,
-    intro: `We handle ${item.toLowerCase()} across the Kansas City metro when bulky, awkward, or high-volume material needs to be loaded and hauled away.`,
+    intro: intro ?? `We handle ${item.toLowerCase()} across the Kansas City metro when bulky, awkward, or high-volume material needs to be loaded and hauled away.`,
     serviceType: `${eyebrow} services`,
     priorityKeywords: [keyword],
     parentCategory: "junk-removal",
-    commonJobs: [
+    commonJobs: commonJobs ?? [
       `${examples[0]} removal`,
       `${examples[1]} haul-away`,
       `${examples[2]} cleanup`,
       "Inside, garage, basement, or exterior pickup",
       "Loading, hauling, and disposal coordination",
     ],
-    jobDetails: [
+    jobDetails: jobDetails ?? [
       {
         title: "Heavy Lifting and Loading",
         description:
@@ -141,12 +153,12 @@ function createItemRemovalPage({
           "Pricing depends on item size, quantity, access, weight, stairs, loading time, and whether the job includes additional junk or debris.",
       },
     ],
-    whyUs: [
+    whyUs: whyUs ?? [
       "Owner-operated communication before and during the job",
       "Own dumpsters and equipment help keep haul-away practical",
       "Clean finish for homes, rentals, garages, basements, and job sites",
     ],
-    faq: [
+    faq: faq ?? [
       {
         question: `Do you offer ${eyebrow.toLowerCase()} in Kansas City?`,
         answer: `Yes. We provide ${eyebrow.toLowerCase()} and related haul-away support across the Kansas City metro.`,
@@ -178,6 +190,7 @@ function createWaterMitigationPage({
   event,
   keyword,
   examples,
+  jobDetails,
 }: {
   slug: string;
   title: string;
@@ -185,6 +198,7 @@ function createWaterMitigationPage({
   event: string;
   keyword: string;
   examples: string[];
+  jobDetails?: { title: string; description: string }[];
 }): SpecialtyServicePageData {
   return {
     slug,
@@ -202,7 +216,7 @@ function createWaterMitigationPage({
       `${examples[2]} drying support`,
       "Damaged contents, debris, and moisture control planning",
     ],
-    jobDetails: [
+    jobDetails: jobDetails ?? [
       {
         title: "Water Removal First",
         description:
@@ -475,6 +489,60 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Furniture Removal",
     item: "furniture removal",
     examples: ["Couches and sectionals", "Tables, chairs, and desks", "Dressers, cabinets, and bulky furniture"],
+    description:
+      "Furniture removal in Kansas City for couches, sectionals, tables, desks, dressers, cabinets, inside pickup, loading, and haul-away.",
+    intro:
+      "We remove bulky household and office furniture from living areas, garages, basements, rentals, and commercial spaces across the Kansas City metro.",
+    commonJobs: [
+      "Couches, sectionals, recliners, and chairs",
+      "Tables, desks, dressers, cabinets, and shelving",
+      "Inside pickup from homes, apartments, offices, or rentals",
+      "Furniture removal during move-outs and larger cleanouts",
+    ],
+    jobDetails: [
+      {
+        title: "Inside Pickup",
+        description:
+          "You do not need to move furniture to the curb. Show us where it is and describe stairs, narrow halls, or access limits when requesting the quote.",
+      },
+      {
+        title: "Bulky and Awkward Pieces",
+        description:
+          "Couches, sectionals, cabinets, desks, and similar pieces are scoped around size, weight, carrying distance, and the path out of the property.",
+      },
+      {
+        title: "Move-Out and Office Clearing",
+        description:
+          "Furniture removal can be combined with household, rental, estate, or commercial cleanouts when more than a few pieces need to go.",
+      },
+      {
+        title: "Disassembly When Needed",
+        description:
+          "Tell us if a piece may need to be taken apart to clear doors, stairs, or elevators so that handling time can be included in the scope.",
+      },
+    ],
+    faq: [
+      {
+        question: "Do you remove furniture from inside Kansas City homes?",
+        answer:
+          "Yes. Furniture can be removed from living areas, apartments, garages, basements, rentals, and offices as part of the quoted job.",
+      },
+      {
+        question: "Do I need to move the furniture to the curb?",
+        answer:
+          "No. Describe where the furniture is located and any stairs or access limits so inside pickup can be included in the quote.",
+      },
+      {
+        question: "Can you remove several rooms of furniture?",
+        answer:
+          "Yes. Multi-room furniture removal can be scoped as part of a house, rental, estate, or commercial cleanout.",
+      },
+      {
+        question: "What affects a furniture removal quote?",
+        answer:
+          "The number and size of pieces, weight, stairs, carrying distance, disassembly needs, loading time, and other included junk all affect the scope.",
+      },
+    ],
   }),
   createItemRemovalPage({
     slug: "appliance-removal",
@@ -482,6 +550,60 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Appliance Removal",
     item: "appliance removal",
     examples: ["Refrigerators and freezers", "Washers, dryers, and dishwashers", "Stoves, ovens, and bulky appliances"],
+    description:
+      "Appliance removal in Kansas City for refrigerators, freezers, washers, dryers, dishwashers, stoves, inside pickup, loading, and haul-away.",
+    intro:
+      "We haul away bulky household appliances after they are ready for safe removal, whether the pickup is a single item or part of a property cleanout.",
+    commonJobs: [
+      "Refrigerator and freezer removal",
+      "Washer, dryer, and dishwasher haul-away",
+      "Stove, oven, and other bulky appliance pickup",
+      "Appliance removal during move-outs and property cleanouts",
+    ],
+    jobDetails: [
+      {
+        title: "Ready for Safe Removal",
+        description:
+          "Appliances should be empty and disconnected before pickup unless different preparation is confirmed in the quote.",
+      },
+      {
+        title: "Access and Carrying Path",
+        description:
+          "Stairs, narrow doors, basement locations, tight utility rooms, and long carrying distances should be described before scheduling.",
+      },
+      {
+        title: "Single or Multiple Appliances",
+        description:
+          "A pickup can cover one bulky appliance or several appliances combined with furniture, household junk, or a larger cleanout.",
+      },
+      {
+        title: "Special Handling Questions",
+        description:
+          "Tell us the appliance type and condition so disposal requirements and any special handling can be confirmed before the job.",
+      },
+    ],
+    faq: [
+      {
+        question: "What appliances do you remove in Kansas City?",
+        answer:
+          "Common requests include refrigerators, freezers, washers, dryers, dishwashers, stoves, ovens, and other bulky household appliances.",
+      },
+      {
+        question: "Do appliances need to be disconnected first?",
+        answer:
+          "Appliances should be empty and disconnected before pickup unless preparation work is specifically discussed and included in the quote.",
+      },
+      {
+        question: "Can you remove appliances from a basement?",
+        answer:
+          "Basement and inside pickup can be quoted. Share the stair, doorway, and carrying-path details so access is accounted for.",
+      },
+      {
+        question: "Can appliance removal be part of a cleanout?",
+        answer:
+          "Yes. Appliances can be included with furniture, household junk, rental turnover debris, or a larger property cleanout.",
+      },
+    ],
   }),
   createItemRemovalPage({
     slug: "mattress-removal",
@@ -496,6 +618,60 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Yard Debris Removal",
     item: "yard debris removal",
     examples: ["Branches and brush", "Outdoor junk and fencing debris", "Storm and cleanup debris"],
+    description:
+      "Yard debris removal in Kansas City for branches, brush, fencing, outdoor junk, storm cleanup material, loading, and haul-away.",
+    intro:
+      "We clear outdoor debris that is difficult to load or move, including branches, brush, fencing, storm material, and mixed exterior junk.",
+    commonJobs: [
+      "Branches, brush, and storm cleanup material",
+      "Fence panels, posts, and outdoor project debris",
+      "Exterior junk from yards, sheds, decks, and garages",
+      "Loading and haul-away after property or landscape cleanup",
+    ],
+    jobDetails: [
+      {
+        title: "Branches and Brush",
+        description:
+          "Share the approximate pile size, branch length, and access so loading volume and handling needs can be estimated before arrival.",
+      },
+      {
+        title: "Fence and Outdoor Debris",
+        description:
+          "Fence panels, posts, loose boards, and mixed exterior debris can be discussed as part of a yard or property cleanup.",
+      },
+      {
+        title: "Storm Cleanup Material",
+        description:
+          "Storm-related branches and outdoor debris can be scoped when they need to be loaded and removed from the property.",
+      },
+      {
+        title: "Confirm the Material First",
+        description:
+          "Describe the pile contents before scheduling so heavy, liquid, hazardous, or regulated material can be identified and discussed separately.",
+      },
+    ],
+    faq: [
+      {
+        question: "What yard debris do you remove in Kansas City?",
+        answer:
+          "Common jobs include branches, brush, fence debris, storm cleanup material, outdoor junk, and debris from yard or exterior projects.",
+      },
+      {
+        question: "How should I describe a yard debris pile?",
+        answer:
+          "Share photos when possible and note the pile dimensions, material types, branch length, and access from the street or driveway.",
+      },
+      {
+        question: "Can yard debris removal include fencing?",
+        answer:
+          "Fence panels, posts, loose boards, and related exterior debris can be included when they are identified in the quote request.",
+      },
+      {
+        question: "Do you remove every type of outdoor material?",
+        answer:
+          "Material types should be confirmed before scheduling, especially liquids, chemicals, soil, very heavy material, or anything requiring regulated disposal.",
+      },
+    ],
   }),
   createItemRemovalPage({
     slug: "hot-tub-removal",
@@ -517,6 +693,60 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Bulk Trash Pickup",
     item: "bulk trash pickup",
     examples: ["Bulky furniture", "Large household items", "Overflow junk and debris"],
+    description:
+      "Bulk trash pickup in Kansas City for oversized household items, multiple bulky pieces, move-out debris, loading, and private haul-away.",
+    intro:
+      "When bulky items do not fit a normal trash cart or the municipal pickup schedule does not fit the project, we provide quoted loading and haul-away service.",
+    commonJobs: [
+      "Multiple bulky furniture and household items",
+      "Move-out, rental turnover, and overflow debris",
+      "Garage, basement, and curb-area bulk pickup",
+      "Private loading and haul-away on an agreed schedule",
+    ],
+    jobDetails: [
+      {
+        title: "A Private Pickup Option",
+        description:
+          "This is a quoted haul-away service for customers who need help loading bulky material or cannot wait for a municipal collection date.",
+      },
+      {
+        title: "More Than One Bulky Item",
+        description:
+          "The scope can include furniture, boxed contents, household junk, and other oversized items from one or several areas of the property.",
+      },
+      {
+        title: "Inside or Outside Loading",
+        description:
+          "Tell us whether items are inside, in a garage or basement, or already outside so stairs, carrying distance, and loading time are clear.",
+      },
+      {
+        title: "Volume-Based Quote",
+        description:
+          "Pricing depends on the amount of material, item size and weight, access, labor, disposal needs, and whether special handling is required.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is this the Kansas City municipal bulk trash service?",
+        answer:
+          "No. Kidd's provides private, quoted loading and haul-away service. Municipal collection schedules and rules are handled by the applicable city.",
+      },
+      {
+        question: "Can you pick up bulk items from inside the property?",
+        answer:
+          "Yes. Inside pickup can be included when rooms, stairs, access, and the items being removed are described in the quote request.",
+      },
+      {
+        question: "What can be included in a bulk pickup?",
+        answer:
+          "Common requests include bulky furniture, large household items, boxed contents, move-out debris, and mixed garage or basement junk.",
+      },
+      {
+        question: "What affects a bulk trash pickup quote?",
+        answer:
+          "Material volume, item weight, access, stairs, carrying distance, labor, disposal needs, and any special handling requirements affect the quote.",
+      },
+    ],
   }),
   createItemRemovalPage({
     slug: "haul-away-junk",
@@ -532,6 +762,23 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     event: "water damage",
     keyword: "water damage cleanup kansas city",
     examples: ["Burst pipes and plumbing leaks", "Wet flooring and contents", "Basement or lower-level water"],
+    jobDetails: [
+      {
+        title: "Cleanup After the Water Source Is Addressed",
+        description:
+          "Water damage cleanup begins after the active source is stopped or controlled, then focuses on standing water, wet contents, and affected material.",
+      },
+      {
+        title: "Damaged Contents and Debris",
+        description:
+          "Wet belongings, flooring debris, and other damaged material can be identified for removal so drying and repairs can move forward.",
+      },
+      {
+        title: "Drying and Repair Transition",
+        description:
+          "Cleanup and moisture control prepare the affected area for continued drying, inspection, and the repair work that follows.",
+      },
+    ],
   }),
   createWaterMitigationPage({
     slug: "flood-cleanup",
@@ -540,6 +787,23 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     event: "flooding",
     keyword: "flood cleanup kansas city",
     examples: ["Indoor flooding", "Storm water intrusion", "Standing water and wet debris"],
+    jobDetails: [
+      {
+        title: "Indoor Flooding Cleanup",
+        description:
+          "Flood cleanup addresses water that has spread through rooms, floors, basements, or lower levels after an overflow or intrusion event.",
+      },
+      {
+        title: "Standing Water and Wet Debris",
+        description:
+          "The scope can include water removal, damaged-content handling, and debris cleanup before deeper drying or repair begins.",
+      },
+      {
+        title: "Conditions Determine the Next Step",
+        description:
+          "The water source, affected materials, time since the event, and access all shape the cleanup and drying plan.",
+      },
+    ],
   }),
   createWaterMitigationPage({
     slug: "burst-pipe-cleanup",
@@ -548,6 +812,23 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     event: "a burst pipe",
     keyword: "burst pipe cleanup kansas city",
     examples: ["Pipe breaks", "Ceiling or wall leaks", "Wet floors and contents"],
+    jobDetails: [
+      {
+        title: "Stop the Active Leak First",
+        description:
+          "The water supply and failed pipe should be shut off or repaired before cleanup so additional water is not entering the property.",
+      },
+      {
+        title: "Remove Water and Wet Contents",
+        description:
+          "Once the source is controlled, standing water, damaged contents, and accessible wet debris can be addressed quickly.",
+      },
+      {
+        title: "Open the Area for Drying",
+        description:
+          "Cleanup helps expose affected floors, walls, ceilings, and contents so moisture control and repair planning can continue.",
+      },
+    ],
   }),
   createWaterMitigationPage({
     slug: "water-extraction",
@@ -556,6 +837,23 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     event: "standing water",
     keyword: "water extraction kansas city",
     examples: ["Standing water removal", "Basement extraction", "Wet floors and affected rooms"],
+    jobDetails: [
+      {
+        title: "Standing Water Removal",
+        description:
+          "Extraction focuses on removing accessible standing water from affected rooms, floors, basements, and lower-level areas.",
+      },
+      {
+        title: "Access Shapes the Work",
+        description:
+          "Water depth, room access, floor type, contents, utilities, and the source of the water all affect the extraction plan.",
+      },
+      {
+        title: "Extraction Is the First Step",
+        description:
+          "Removing visible water does not complete the drying process. Moisture control, monitoring, cleanup, and repairs may still be needed afterward.",
+      },
+    ],
   }),
   createWaterMitigationPage({
     slug: "basement-water-cleanup",
@@ -564,6 +862,23 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     event: "basement water",
     keyword: "basement water cleanup kansas city",
     examples: ["Basement water removal", "Wet storage and contents", "Lower-level drying support"],
+    jobDetails: [
+      {
+        title: "Lower-Level Water Removal",
+        description:
+          "Basement cleanup can begin with accessible standing water and wet material after the source or intrusion has been controlled.",
+      },
+      {
+        title: "Stored Contents and Tight Access",
+        description:
+          "Boxes, furniture, appliances, shelving, stairs, and narrow paths often need to be included in the basement cleanup plan.",
+      },
+      {
+        title: "Cleanup Before Repair",
+        description:
+          "Removing damaged contents and debris makes it easier to continue drying, inspect affected materials, and plan basement repairs.",
+      },
+    ],
   }),
 ];
 
@@ -1259,6 +1574,8 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
       { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
       { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
       { label: "Water Mitigation", href: "/services/water-mitigation" },
+      { label: "Water Damage Cleanup", href: "/services/water-damage-cleanup" },
+      { label: "Basement Water Cleanup", href: "/services/basement-water-cleanup" },
     ],
   },
   {
