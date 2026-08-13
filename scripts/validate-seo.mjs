@@ -55,6 +55,7 @@ function pageChecks(path, html, sitemapPaths) {
   const title = html.match(/<title>(.*?)<\/title>/)?.[1];
   const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1];
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  const robots = html.match(/<meta name="robots" content="([^"]+)"/)?.[1];
   const h1s = [...html.matchAll(/<h1\b[^>]*>(.*?)<\/h1>/g)];
   const jsonLdCount = (html.match(/application\/ld\+json/g) || []).length;
 
@@ -70,8 +71,16 @@ function pageChecks(path, html, sitemapPaths) {
     errors.push("missing canonical");
   }
 
+  if (canonical && !canonical.startsWith(siteUrl)) {
+    errors.push(`canonical must use ${siteUrl}: ${canonical}`);
+  }
+
   if (canonical && stripSiteOrigin(canonical) !== path) {
     errors.push(`canonical mismatch: ${canonical}`);
+  }
+
+  if (robots && /noindex/i.test(robots)) {
+    errors.push(`unexpected noindex directive: ${robots}`);
   }
 
   if (h1s.length !== 1) {
@@ -98,13 +107,27 @@ if (!sitemapResponse.ok) {
   throw new Error(`Sitemap fetch failed: ${sitemapResponse.status} ${sitemapUrl}`);
 }
 
-const sitemapPaths = new Set(
-  [...sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g)]
-    .map((match) => stripSiteOrigin(match[1]))
-    .filter((path) => path.startsWith("/"))
-);
+const sitemapUrls = [...sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
+const sitemapPathList = sitemapUrls.map(stripSiteOrigin).filter((path) => path.startsWith("/"));
+const sitemapPaths = new Set(sitemapPathList);
 
 const failures = [];
+
+if (sitemapUrls.some((url) => !url.startsWith(siteUrl))) {
+  failures.push(`sitemap URLs must use ${siteUrl}`);
+}
+
+if (sitemapPathList.length !== sitemapPaths.size) {
+  failures.push("sitemap contains duplicate URLs");
+}
+
+const { response: robotsResponse, text: robotsText } = await fetchText(`${baseUrl}/robots.txt`);
+
+if (!robotsResponse.ok) {
+  failures.push(`robots.txt status ${robotsResponse.status}`);
+} else if (!robotsText.includes(`Sitemap: ${siteUrl}/sitemap.xml`)) {
+  failures.push("robots.txt does not advertise the canonical sitemap URL");
+}
 
 for (const path of sitemapPaths) {
   const url = toLocalUrl(path);
@@ -131,4 +154,3 @@ if (failures.length > 0) {
 }
 
 console.log(`SEO validation passed for ${sitemapPaths.size} sitemap URLs at ${baseUrl}`);
-

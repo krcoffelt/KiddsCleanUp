@@ -45,24 +45,24 @@ const residentialRelated = [
 ];
 
 const cleanoutRelated = [
-  { label: "Junk Removal", href: "/services/junk-removal" },
-  { label: "Cleanouts", href: "/services/cleanouts" },
+  { label: "Kansas City Junk Removal", href: "/services/junk-removal" },
+  { label: "Kansas City Cleanout Services", href: "/services/cleanouts" },
   { label: "House Cleanouts", href: "/services/house-cleanouts" },
   { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
   { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
 ];
 
 const commercialRelated = [
-  { label: "Demolition Services", href: "/services/demolition" },
+  { label: "Kansas City Demolition Company", href: "/services/demolition" },
   { label: "Commercial Demo", href: "/services/commercial" },
-  { label: "Construction Debris", href: "/services/construction-debris-removal" },
+  { label: "Construction Debris Removal", href: "/services/construction-debris-removal" },
   { label: "Concrete Removal", href: "/services/concrete-removal" },
   { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
   { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
 ];
 
 const junkRemovalRelated = [
-  { label: "Junk Removal", href: "/services/junk-removal" },
+  { label: "Kansas City Junk Removal", href: "/services/junk-removal" },
   { label: "Furniture Removal", href: "/services/furniture-removal" },
   { label: "Appliance Removal", href: "/services/appliance-removal" },
   { label: "Mattress Removal", href: "/services/mattress-removal" },
@@ -73,7 +73,7 @@ const junkRemovalRelated = [
 ];
 
 const waterMitigationRelated = [
-  { label: "Water Mitigation", href: "/services/water-mitigation" },
+  { label: "Kansas City Water Mitigation", href: "/services/water-mitigation" },
   { label: "Water Damage Cleanup", href: "/services/water-damage-cleanup" },
   { label: "Flood Cleanup", href: "/services/flood-cleanup" },
   { label: "Burst Pipe Cleanup", href: "/services/burst-pipe-cleanup" },
@@ -282,7 +282,7 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Demolition Services",
     h1: "Kansas City Demolition Company and Cleanup Crew",
     intro:
-      "Kidd's Clean Up and Demo handles practical demolition work for homeowners, landlords, businesses, contractors, and property managers across the Kansas City metro.",
+      "Kidd's Clean Up and Demo is a Kansas City demolition company serving homeowners, landlords, businesses, contractors, and property managers with demolition, debris removal, and site cleanup.",
     serviceType: "Demolition contractor services",
     priorityKeywords: [
       "demolition company kansas city",
@@ -292,7 +292,7 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     ],
     parentCategory: "demolition",
     commonJobs: [
-      "Residential and commercial demolition",
+      "Residential and commercial demolition projects",
       "Interior demolition and selective tear-outs",
       "Garage, shed, deck, and small structure removal",
       "Concrete removal and construction debris cleanup",
@@ -312,6 +312,16 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         title: "Cleanup and Haul-Away",
         description:
           "Demolition debris is loaded, hauled, and cleaned up so the site is ready for the next phase.",
+      },
+      {
+        title: "Scope and Site Review",
+        description:
+          "Quotes account for the structure or material being removed, equipment access, nearby surfaces, debris volume, utility status, and the cleanup needed afterward.",
+      },
+      {
+        title: "One Demolition Contractor for the Full Scope",
+        description:
+          "Property owners and project teams can coordinate demolition, loading, haul-away, and site cleanup through one Kansas City crew.",
       },
     ],
     whyUs: [
@@ -340,6 +350,9 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
       { label: "Residential Demo", href: "/services/residential" },
       { label: "Commercial Demo", href: "/services/commercial" },
       { label: "Interior Demolition", href: "/services/interior-demolition" },
+      { label: "Garage Demolition", href: "/services/garage-demolition" },
+      { label: "Shed Demolition", href: "/services/shed-demolition" },
+      { label: "Deck Removal", href: "/services/deck-removal" },
       { label: "Construction Debris", href: "/services/construction-debris-removal" },
     ],
   },
@@ -1218,12 +1231,14 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Construction Debris Removal",
     h1: "Kansas City Construction Debris Removal",
     intro:
-      "We help keep remodels, rental turns, and job sites moving by removing construction debris, demolition waste, and leftover materials.",
+      "We remove construction debris from remodels, tear-outs, rental turns, and active job sites across the Kansas City metro so crews and property owners can keep the next phase moving.",
     serviceType: "Construction debris removal services",
+    priorityKeywords: ["construction debris removal kansas city"],
+    parentCategory: "demolition",
     commonJobs: [
       "Renovation debris haul-away",
       "Post-demolition cleanup",
-      "Contractor job-site debris",
+      "One-time and recurring contractor job-site debris",
       "Wood, drywall, fixtures, and packaging removal",
     ],
     jobDetails: [
@@ -1238,9 +1253,19 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
           "Remove old fixtures, cabinets, flooring, drywall, trim, and other materials from remodel projects.",
       },
       {
-        title: "Flexible Project Support",
+        title: "One-Time or Staged Haul-Away",
         description:
-          "Useful for one-time cleanup, turnover work, and demolition jobs that need debris hauled away quickly.",
+          "Schedule a single debris pickup or coordinate haul-away around project phases when material cannot remain in the work area.",
+      },
+      {
+        title: "Material and Access Review",
+        description:
+          "Before quoting, identify the debris types, approximate volume, weight, loading access, stairs, and any material that may need special handling.",
+      },
+      {
+        title: "Contractor and Property Support",
+        description:
+          "The service is structured for contractors, landlords, property managers, and homeowners who need debris loaded, removed, and the work area left usable.",
       },
     ],
     whyUs: [
@@ -1264,8 +1289,20 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         answer:
           "Yes. Many projects include both demolition and debris haul-away in one scope.",
       },
+      {
+        question: "What information helps with a construction debris quote?",
+        answer:
+          "Share the material types, estimated volume, photos, job-site access, loading distance, stairs, and whether pickup needs to happen once or across multiple project phases.",
+      },
     ],
-    relatedServices: commercialRelated,
+    relatedServices: [
+      { label: "Kansas City Demolition Company", href: "/services/demolition" },
+      { label: "Commercial Demolition", href: "/services/commercial" },
+      { label: "Interior Demolition", href: "/services/interior-demolition" },
+      { label: "Concrete Removal", href: "/services/concrete-removal" },
+      { label: "Kansas City Junk Removal", href: "/services/junk-removal" },
+      { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+    ],
   },
   {
     slug: "cleanouts",
@@ -1277,6 +1314,8 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     intro:
       "We clear unwanted items, debris, and leftover contents from properties that need to be emptied, cleaned up, and made usable again.",
     serviceType: "Property cleanout services",
+    priorityKeywords: ["cleanout services kansas city"],
+    parentCategory: "cleanouts",
     commonJobs: [
       "Whole-property cleanouts",
       "Move-out and rental cleanouts",
@@ -1298,6 +1337,16 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         title: "Junk Removal Plus Cleanup",
         description:
           "We handle heavy lifting, loading, hauling, and practical cleanup so the property can move forward.",
+      },
+      {
+        title: "Choose the Right Cleanout Scope",
+        description:
+          "House, estate, garage, basement, rental, foreclosure, and commercial cleanouts each have dedicated service details while this page covers whole-property and mixed-area work.",
+      },
+      {
+        title: "Access and Volume Planning",
+        description:
+          "Photos, room count, stairs, exterior piles, bulky items, and the approximate amount of material help determine the crew, equipment, and haul-away plan.",
       },
     ],
     whyUs: [
@@ -1322,7 +1371,16 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
           "Yes. We often help clear properties before renovation, listing, tenant turnover, or sale.",
       },
     ],
-    relatedServices: cleanoutRelated,
+    relatedServices: [
+      { label: "Kansas City Junk Removal", href: "/services/junk-removal" },
+      { label: "House Cleanouts", href: "/services/house-cleanouts" },
+      { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+      { label: "Garage Cleanouts", href: "/services/garage-cleanouts" },
+      { label: "Basement Cleanouts", href: "/services/basement-cleanouts" },
+      { label: "Rental Property Cleanouts", href: "/services/rental-property-cleanouts" },
+      { label: "Foreclosure Cleanouts", href: "/services/foreclosure-cleanouts" },
+      { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+    ],
   },
   {
     slug: "house-cleanouts",
@@ -1446,8 +1504,10 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Garage Cleanouts",
     h1: "Kansas City Garage Cleanout Services",
     intro:
-      "We clear overfilled garages so homeowners, landlords, and property managers can reclaim parking, storage, and usable work space.",
+      "We remove stored items, furniture, appliances, boxes, scrap, and mixed clutter from garages so the space can be used for parking, storage, repairs, or a property turnover.",
     serviceType: "Garage cleanout services",
+    priorityKeywords: ["garage cleanout kansas city"],
+    parentCategory: "cleanouts",
     commonJobs: [
       "Packed garage cleanouts",
       "Old furniture and appliance removal",
@@ -1466,9 +1526,19 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
           "Garage cleanouts are useful before selling, renting, moving, or starting a renovation.",
       },
       {
-        title: "Cleanup Options",
+        title: "Inside Removal and Loading",
         description:
-          "If a garage structure also needs to come down, we can discuss demolition and cleanout together.",
+          "Items can be removed directly from the garage, sorted according to the agreed scope, loaded, and hauled away without requiring curbside staging.",
+      },
+      {
+        title: "Cleanout or Garage Demolition",
+        description:
+          "A garage cleanout removes the contents while keeping the structure. If the garage itself needs removal, use our separate garage demolition service.",
+      },
+      {
+        title: "Quote Details",
+        description:
+          "Photos, the number of garage bays, item volume, heavy pieces, vehicle access, exterior piles, and any disassembly needs help define the cleanout scope.",
       },
     ],
     whyUs: [
@@ -1493,7 +1563,14 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
           "Yes. If the structure needs removal, we can quote garage demolition separately or with the cleanout.",
       },
     ],
-    relatedServices: cleanoutRelated,
+    relatedServices: [
+      { label: "Kansas City Cleanout Services", href: "/services/cleanouts" },
+      { label: "Kansas City Junk Removal", href: "/services/junk-removal" },
+      { label: "Garage Demolition", href: "/services/garage-demolition" },
+      { label: "Furniture Removal", href: "/services/furniture-removal" },
+      { label: "Appliance Removal", href: "/services/appliance-removal" },
+      { label: "Rental Property Cleanouts", href: "/services/rental-property-cleanouts" },
+    ],
   },
   {
     slug: "basement-cleanouts",
@@ -1586,8 +1663,10 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Hoarder Cleanouts",
     h1: "Kansas City Hoarder Cleanout Services",
     intro:
-      "High-volume cleanouts require a practical plan, steady hauling, and clear communication. We help clear heavy clutter so the property can be addressed safely.",
+      "High-volume clutter cleanouts require a clear scope, respectful communication, and a practical room-by-room removal plan. We help property owners and authorized contacts clear unwanted material so the property can move toward cleaning, repairs, inspection, or turnover.",
     serviceType: "Hoarder cleanout services",
+    priorityKeywords: ["hoarder cleanout kansas city"],
+    parentCategory: "cleanouts",
     commonJobs: [
       "High-volume clutter removal",
       "Furniture, boxes, and debris hauling",
@@ -1610,6 +1689,16 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         description:
           "The goal is to create access for cleaning, repairs, inspections, or property turnover.",
       },
+      {
+        title: "Scope and Privacy",
+        description:
+          "Before work begins, the property contact identifies access, areas included, items that must remain, and any privacy or communication requirements for the project.",
+      },
+      {
+        title: "Volume and Access Planning",
+        description:
+          "Room count, material volume, stairs, narrow paths, heavy items, exterior piles, and parking or dumpster access shape the crew and hauling plan.",
+      },
     ],
     whyUs: [
       "Practical, direct communication about a difficult scope",
@@ -1631,6 +1720,11 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         question: "Can the cleanout be done in phases?",
         answer:
           "Depending on the size and access, we can discuss whether the project should be handled in one pass or phases.",
+      },
+      {
+        question: "How do you determine what should stay or be removed?",
+        answer:
+          "The authorized property contact defines the agreed removal scope and identifies items or areas that are not part of the cleanout before work begins.",
       },
     ],
     relatedServices: cleanoutRelated,
@@ -1700,8 +1794,10 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     eyebrow: "Rental Property Cleanouts",
     h1: "Kansas City Rental Property Cleanouts",
     intro:
-      "When tenants leave items, debris, or cleanup work behind, we help landlords and property managers clear the rental so repairs and showings can move forward.",
+      "When a rental is ready for turnover and unwanted contents remain, we help landlords and property managers clear furniture, appliances, trash, boxes, and debris so maintenance and listing work can move forward.",
     serviceType: "Rental property cleanout services",
+    priorityKeywords: ["rental property cleanout kansas city"],
+    parentCategory: "cleanouts",
     commonJobs: [
       "Move-out and eviction cleanouts",
       "Furniture and appliance removal",
@@ -1724,6 +1820,16 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         description:
           "We handle loading and haul-away so the property is easier to repair and rent again.",
       },
+      {
+        title: "Access and Authorization",
+        description:
+          "The property contact confirms that the unit is ready for cleanout, provides access instructions, and identifies any contents or areas that are not included.",
+      },
+      {
+        title: "Multi-Area Turnovers",
+        description:
+          "The scope can include the living space, garage, basement, storage areas, and exterior debris when those areas are identified during quoting.",
+      },
     ],
     whyUs: [
       "Built for practical property turnover work",
@@ -1745,6 +1851,11 @@ export const SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
         question: "Can you remove junk from garages and yards too?",
         answer:
           "Yes. Rental cleanouts can include interior rooms, garages, basements, sheds, and exterior debris.",
+      },
+      {
+        question: "What should a property manager provide before the cleanout?",
+        answer:
+          "Confirm access and authorization, identify areas included, note anything that must remain, and share photos or an approximate inventory so the removal scope can be quoted accurately.",
       },
     ],
     relatedServices: cleanoutRelated,

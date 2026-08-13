@@ -48,6 +48,7 @@ export default async function SpecialtyServicePage({
   }
 
   const path = `/services/${page.slug}`;
+  const relatedServices = page.relatedServices.filter((service) => service.href !== path);
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: page.eyebrow, href: path },
@@ -166,7 +167,7 @@ export default async function SpecialtyServicePage({
           <div className="rounded-2xl border border-surface-dark bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-bold text-primary-dark mb-4">Related Services</h2>
             <div className="grid gap-3 sm:grid-cols-2">
-              {page.relatedServices.map((service) => (
+              {relatedServices.map((service) => (
                 <Link
                   key={service.href}
                   href={service.href}

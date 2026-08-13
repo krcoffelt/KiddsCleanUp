@@ -162,8 +162,8 @@ export default function WaterMitigationPage() {
               {[
                 "Standing water needs to be removed immediately to keep damage from spreading through floors, walls, and contents.",
                 "Professional drying equipment helps remove moisture trapped inside building materials, not just surface water.",
-                "Mold growth and structural damage can begin within 24 to 48 hours if water is left untreated.",
-                "Fast mitigation helps stabilize the property and reduce long-term repair and restoration costs.",
+                "Moisture can move into nearby materials and concealed spaces when affected areas are not addressed.",
+                "Mitigation helps stabilize the affected area and gives the property owner a clearer path toward repairs.",
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <svg className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

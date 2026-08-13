@@ -8,8 +8,8 @@ import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
-const pageTitle = "Kansas City Junk Removal & Property Cleanouts";
-const pageDescription = `Junk removal, move-out cleanouts, haul-away, and property cleanup services across the Kansas City metro for homes, rentals, garages, and job sites. Call ${COMPANY.phone} for a free quote.`;
+const pageTitle = "Kansas City Junk Removal & Haul-Away";
+const pageDescription = `Junk removal and haul-away across the Kansas City metro for furniture, appliances, bulky items, household clutter, yard debris, and renovation debris. Call ${COMPANY.phone} for a free quote.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,
@@ -22,20 +22,20 @@ const services = [
     description: "Removal of old furniture, boxed clutter, mattresses, appliances, and unwanted household items from homes and apartments.",
   },
   {
-    title: "Garage, Basement & Shed Cleanouts",
-    description: "Fast cleanout of overfilled garages, basements, sheds, and storage spaces so you can reclaim usable space.",
+    title: "Bulky Item Pickup",
+    description: "Inside or outside pickup for furniture, appliances, mattresses, hot tubs, and other bulky items that are difficult to move.",
   },
   {
-    title: "Estate & Move-Out Cleanouts",
-    description: "Practical haul-away help for estate situations, downsizing, evictions, and move-out cleanups when large volumes need to go quickly.",
+    title: "Garage, Basement & Storage Junk",
+    description: "Haul-away for boxes, stored items, old equipment, furniture, and mixed clutter from garages, basements, sheds, and storage spaces.",
   },
   {
     title: "Yard Debris & Exterior Cleanup",
     description: "Removal of branches, fencing, exterior junk piles, and general debris left around the property.",
   },
   {
-    title: "Rental Property Turnover Cleanup",
-    description: "Junk removal and property cleanout for landlords and property managers between tenants.",
+    title: "Rental & Move-Out Junk Removal",
+    description: "Removal of furniture, trash, boxes, and left-behind contents for landlords, property managers, and residents preparing for a move.",
   },
   {
     title: "Construction & Renovation Debris",
@@ -123,10 +123,10 @@ export default function JunkRemovalPage() {
       <WebPageSchema title={pageTitle} description={pageDescription} path="/services/junk-removal" />
       <BreadcrumbSchema items={breadcrumbs} />
       <ServiceSchema
-        name="Kansas City Junk Removal & Property Cleanouts"
+        name="Kansas City Junk Removal and Haul-Away"
         description={pageDescription}
         path="/services/junk-removal"
-        serviceType="Junk removal and property cleanout services"
+        serviceType="Junk removal and haul-away services"
       />
       <FAQSchema items={SERVICE_PAGE_FAQS["junk-removal"]} />
 
@@ -140,7 +140,8 @@ export default function JunkRemovalPage() {
           <p className="text-lg text-white/80 max-w-3xl">
             We remove unwanted junk, furniture, appliances, debris, and clutter from
             homes, rental properties, garages, and job sites across the Kansas City metro.
-            You point to what needs to go, and we handle the haul-away.
+            You identify what needs to go, and our crew handles the lifting, loading,
+            and haul-away.
           </p>
         </div>
       </section>

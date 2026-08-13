@@ -49,8 +49,9 @@ export default function AboutPage() {
                 Kidd&apos;s Clean Up and Demo started in {COMPANY.since} with a
                 simple idea: do honest work, charge fair prices, and leave every
                 job site cleaner than we found it. What began as a small family
-                operation has grown into one of the Kansas City metro&apos;s most
-                trusted cleanup and demolition teams.
+                operation has grown into a cleanup and demolition team serving
+                homeowners, businesses, landlords, and contractors across the
+                Kansas City metro.
               </p>
               <p>
                 As an owner-operated company, you&apos;ll always deal directly
