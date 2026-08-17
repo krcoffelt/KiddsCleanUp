@@ -35,6 +35,23 @@ function escapeHtml(value: string): string {
     .replaceAll("'", "&#39;");
 }
 
+function isMissingAttributionColumnError(error: { code?: string; message?: string }): boolean {
+  if (error.code !== "42703" && error.code !== "PGRST204") {
+    return false;
+  }
+
+  const message = error.message?.toLowerCase() ?? "";
+  return [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "landing_page",
+    "referrer_url",
+  ].some((column) => message.includes(column));
+}
+
 async function sendLeadNotificationEmail(leadId: string, data: LeadFormData): Promise<void> {
   const resendApiKey = process.env.RESEND_API_KEY;
   const to = process.env.LEAD_NOTIFY_EMAIL;
@@ -231,29 +248,51 @@ export async function POST(request: NextRequest): Promise<NextResponse<QuoteResp
     // Insert into Supabase
     const supabase = getSupabaseAdmin();
     const userAgent = request.headers.get("user-agent") || "";
-    const { data: lead, error } = await supabase
+    const baseLead = {
+      full_name: data.full_name,
+      phone: data.phone,
+      email: data.email || null,
+      service_type: data.service_type || null,
+      project_address: data.project_address,
+      project_details: data.project_details,
+      preferred_date: data.preferred_date,
+      preferred_time: data.preferred_time,
+      status: "new",
+      source_page: data.landing_page || request.headers.get("referer") || "",
+      ip_hash: hashValue(ip),
+      user_agent: userAgent.slice(0, 500),
+    };
+    const attributedLead = {
+      ...baseLead,
+      utm_source: data.utm_source || null,
+      utm_medium: data.utm_medium || null,
+      utm_campaign: data.utm_campaign || null,
+      utm_term: data.utm_term || null,
+      utm_content: data.utm_content || null,
+      landing_page: data.landing_page || null,
+      referrer_url: data.referrer_url || request.headers.get("referer") || null,
+    };
+
+    let { data: lead, error } = await supabase
       .from("leads")
-      .insert({
-        ...data,
-        email: data.email || null,
-        service_type: data.service_type || null,
-        status: "new",
-        source_page: data.landing_page || request.headers.get("referer") || "",
-        utm_source: data.utm_source || null,
-        utm_medium: data.utm_medium || null,
-        utm_campaign: data.utm_campaign || null,
-        utm_term: data.utm_term || null,
-        utm_content: data.utm_content || null,
-        landing_page: data.landing_page || null,
-        referrer_url: data.referrer_url || request.headers.get("referer") || null,
-        ip_hash: hashValue(ip),
-        user_agent: userAgent.slice(0, 500),
-      })
+      .insert(attributedLead)
       .select("id")
       .single();
 
-    if (error) {
-      console.error("Supabase insert error:", error);
+    // Keep quote submissions working when the optional attribution migration has
+    // not reached the deployed Supabase project yet. The first insert fails before
+    // writing a row, so retrying the legacy-compatible payload cannot duplicate it.
+    if (error && isMissingAttributionColumnError(error)) {
+      console.warn("Lead attribution columns are unavailable; retrying without attribution fields");
+      ({ data: lead, error } = await supabase
+        .from("leads")
+        .insert(baseLead)
+        .select("id")
+        .single());
+    }
+
+    if (error || !lead) {
+      console.error("Supabase insert error:", error ?? "Insert returned no lead");
       return NextResponse.json(
         { ok: false, code: "SERVER_ERROR" },
         { status: 500 }
