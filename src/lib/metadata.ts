@@ -8,11 +8,17 @@ export function buildPageMetadata({
   description,
   path,
   image = DEFAULT_IMAGE,
+  imageAlt = `${COMPANY.name} service page`,
+  imageWidth = 3338,
+  imageHeight = 1410,
 }: {
   title: string;
   description: string;
   path: string;
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }): Metadata {
   return {
     title,
@@ -28,9 +34,9 @@ export function buildPageMetadata({
       images: [
         {
           url: image,
-          width: 3338,
-          height: 1410,
-          alt: `${COMPANY.name} service page`,
+          width: imageWidth,
+          height: imageHeight,
+          alt: imageAlt,
         },
       ],
     },
@@ -42,4 +48,3 @@ export function buildPageMetadata({
     },
   };
 }
-

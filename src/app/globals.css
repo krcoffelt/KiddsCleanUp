@@ -79,6 +79,38 @@ html {
   box-shadow: 0 10px 22px rgba(13, 33, 55, 0.2);
 }
 
+.article-copy a {
+  color: var(--primary-light);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.article-copy a:hover {
+  color: var(--primary-dark);
+  text-decoration-color: var(--accent-dark);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .editorial-hero-image {
+    animation: editorial-settle 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  @keyframes editorial-settle {
+    from {
+      opacity: 0.72;
+      transform: scale(1.055);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .premium-cta {
     transition: background-color 180ms ease, color 180ms ease;

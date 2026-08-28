@@ -11,6 +11,7 @@ const FOOTER_LINKS = [
   { label: "Lead-Safe", href: "/services/lead-safe" },
   { label: "Water Mitigation", href: "/services/water-mitigation" },
   { label: "Junk Removal", href: "/services/junk-removal" },
+  { label: "Guides", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;

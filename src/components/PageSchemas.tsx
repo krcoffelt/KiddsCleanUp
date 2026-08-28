@@ -1,4 +1,4 @@
-import { SERVICE_AREA_CITIES } from "@/lib/constants";
+import { COMPANY, SERVICE_AREA_CITIES } from "@/lib/constants";
 import type { BreadcrumbItem } from "@/components/Breadcrumbs";
 import type { FAQItem } from "@/components/FAQSection";
 
@@ -86,6 +86,55 @@ export function FAQSchema({ items }: { items: FAQItem[] }) {
             text: item.answer,
           },
         })),
+      }}
+    />
+  );
+}
+
+export function ArticleSchema({
+  title,
+  description,
+  path,
+  image,
+  datePublished,
+  dateModified,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  image: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return (
+    <SchemaScript
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "@id": schemaId(path, "article"),
+        headline: title,
+        description,
+        image: toAbsoluteUrl(image),
+        datePublished,
+        dateModified,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": schemaId(path, "webpage"),
+        },
+        author: {
+          "@type": "Organization",
+          "@id": BUSINESS_ID,
+          name: COMPANY.name,
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": BUSINESS_ID,
+          name: COMPANY.name,
+        },
+        about: {
+          "@type": "LocalBusiness",
+          "@id": BUSINESS_ID,
+        },
       }}
     />
   );
