@@ -98,7 +98,7 @@ export function generateMetadata({
     const cityLabel = cityPage.state ? `${cityPage.city}, ${cityPage.state}` : cityPage.city;
 
     return buildPageMetadata({
-      title: `${cityLabel} Demolition, Cleanouts & Junk Removal`,
+      title: `${cityLabel} Demo & Junk Removal`,
       description: `Local demolition, cleanouts, junk removal, lead-safe work, and water mitigation in ${cityLabel}. Call Kidd's Clean Up and Demo for a free quote.`,
       path: `/service-areas/${cityPage.slug}`,
     });
@@ -127,7 +127,7 @@ export default async function CityServiceAreaPage({
   return (
     <>
       <WebPageSchema
-        title={`${cityLabel} Demolition, Cleanouts & Junk Removal`}
+        title={`${cityLabel} Demo & Junk Removal`}
         description={pageDescription}
         path={pagePath}
       />

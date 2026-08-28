@@ -50,6 +50,7 @@ const cleanoutRelated = [
   { label: "House Cleanouts", href: "/services/house-cleanouts" },
   { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
   { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
+  { label: "Hoarder Cleanouts", href: "/services/hoarder-cleanouts" },
 ];
 
 const commercialRelated = [
@@ -69,6 +70,7 @@ const junkRemovalRelated = [
   { label: "Yard Debris Removal", href: "/services/yard-debris-removal" },
   { label: "Hot Tub Removal", href: "/services/hot-tub-removal" },
   { label: "Bulk Trash Pickup", href: "/services/bulk-trash-pickup" },
+  { label: "Trash Removal", href: "/services/trash-removal" },
   { label: "Haul Away Junk", href: "/services/haul-away-junk" },
 ];
 
@@ -112,7 +114,7 @@ function createItemRemovalPage({
   return {
     slug,
     title,
-    description: description ?? `${eyebrow} in Kansas City for ${examples.slice(0, 3).join(", ")}, loading, haul-away, cleanup, and property cleanout support.`,
+    description: description ?? `${eyebrow} in Kansas City for ${examples.slice(0, 3).join(", ")}, with loading, cleanup, and haul-away.`,
     eyebrow,
     h1: `${eyebrow} in Kansas City`,
     intro: intro ?? `We handle ${item.toLowerCase()} across the Kansas City metro when bulky, awkward, or high-volume material needs to be loaded and hauled away.`,
@@ -203,7 +205,7 @@ function createWaterMitigationPage({
   return {
     slug,
     title,
-    description: `${eyebrow} in Kansas City for ${examples.slice(0, 3).join(", ")}, water removal, drying support, damaged-content cleanup, and property stabilization.`,
+    description: `${eyebrow} in Kansas City for ${examples[0].toLowerCase()} and related damage, with water removal, drying support, and damaged-content cleanup.`,
     eyebrow,
     h1: `${eyebrow} in Kansas City`,
     intro: `When ${event.toLowerCase()} affects a home, rental, or commercial space, fast cleanup and moisture control help keep the damage from spreading.`,
@@ -278,7 +280,7 @@ const ADDITIONAL_SPECIALTY_SERVICE_PAGES: SpecialtyServicePageData[] = [
     slug: "demolition",
     title: "Kansas City Demolition Company",
     description:
-      "Kansas City demolition company for residential demolition, commercial demolition, interior tear-outs, garage demo, shed removal, deck removal, concrete removal, and debris cleanup.",
+      "Kansas City demolition company for residential and commercial demo, interior tear-outs, garages, sheds, decks, concrete, and debris cleanup.",
     eyebrow: "Demolition Services",
     h1: "Kansas City Demolition Company and Cleanup Crew",
     intro:

@@ -29,6 +29,8 @@ const POPULAR_SERVICE_LINKS = [
   { label: "Basement Cleanouts", href: "/services/basement-cleanouts" },
   { label: "Commercial Cleanouts", href: "/services/commercial-cleanouts" },
   { label: "Estate Cleanouts", href: "/services/estate-cleanouts" },
+  { label: "Hoarder Cleanouts", href: "/services/hoarder-cleanouts" },
+  { label: "Trash Removal", href: "/services/trash-removal" },
   { label: "Rental Cleanouts", href: "/services/rental-property-cleanouts" },
   { label: "Construction Debris", href: "/services/construction-debris-removal" },
   { label: "Water Damage Cleanup", href: "/services/water-damage-cleanup" },

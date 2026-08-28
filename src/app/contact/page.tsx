@@ -7,7 +7,7 @@ import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact Us & Request a Quote",
-  description: `Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`,
+  description: `Request a Kansas City demolition, junk removal, cleanout, lead-safe, or water mitigation quote from ${COMPANY.name}. Call ${COMPANY.phone}.`,
   alternates: {
     canonical: "/contact",
   },
@@ -23,7 +23,7 @@ export default function ContactPage() {
     <>
       <WebPageSchema
         title="Request a Free Quote"
-        description={`Get a free quote from ${COMPANY.name}. Serving Kansas City metro with residential and commercial cleanup, junk removal, demolition, lead-safe services, and water mitigation. Call ${COMPANY.phone}.`}
+        description={`Request a Kansas City demolition, junk removal, cleanout, lead-safe, or water mitigation quote from ${COMPANY.name}. Call ${COMPANY.phone}.`}
         path="/contact"
       />
       <BreadcrumbSchema items={breadcrumbs} />

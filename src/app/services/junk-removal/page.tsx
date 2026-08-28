@@ -9,7 +9,7 @@ import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Junk Removal & Haul-Away";
-const pageDescription = `Junk removal and haul-away across the Kansas City metro for furniture, appliances, bulky items, household clutter, yard debris, and renovation debris. Call ${COMPANY.phone} for a free quote.`;
+const pageDescription = `Kansas City junk removal and haul-away for furniture, appliances, bulky items, household clutter, yard debris, and renovation debris. Call ${COMPANY.phone}.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,

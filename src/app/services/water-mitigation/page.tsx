@@ -9,7 +9,7 @@ import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Kansas City Water Mitigation";
-const pageDescription = `Emergency water mitigation, extraction, drying, and moisture control across the Kansas City metro for leaks, flooding, and burst pipes. Call ${COMPANY.phone} for a free quote.`;
+const pageDescription = `Kansas City water mitigation, extraction, drying, and moisture control for leaks, flooding, and burst pipes. Call ${COMPANY.phone} for a free quote.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,

@@ -17,12 +17,12 @@ export const metadata = buildPageMetadata({
 
 const services = [
   {
-    title: "Lead Paint Removal",
-    description: "Safe removal of lead-based paint from surfaces using EPA-approved methods. We contain, remove, and dispose of lead materials properly.",
+    title: "Lead-Safe Removal Support",
+    description: "Removal work is scoped around the painted materials, occupied areas, testing information, containment needs, and required cleanup steps.",
   },
   {
     title: "Lead-Safe Demolition",
-    description: "Demolition of structures containing lead paint or materials using certified lead-safe work practices to protect occupants and workers.",
+    description: "Selective demolition involving painted materials is planned with dust control, containment, cleanup, and disposal requirements in view.",
   },
   {
     title: "Pre-Renovation Lead Testing Coordination",
@@ -30,7 +30,7 @@ const services = [
   },
   {
     title: "Containment & Disposal",
-    description: "Proper containment of lead dust and debris during work, with compliant disposal at authorized facilities.",
+    description: "Containment and disposal requirements are confirmed for the specific material, project type, and jurisdiction before work begins.",
   },
 ];
 
@@ -89,8 +89,9 @@ export default function LeadSafePage() {
             Kansas City Lead-Safe Removal &amp; Demolition
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
-            Protect your family, tenants, and workers with certified lead-safe
-            practices. We follow EPA guidelines for every lead-related project.
+            Lead-safe work starts by identifying what will be disturbed, confirming
+            the applicable requirements, and planning containment, dust control,
+            cleanup, and disposal before removal begins.
           </p>
         </div>
       </section>
@@ -104,8 +105,9 @@ export default function LeadSafePage() {
             </svg>
             <p className="text-sm text-foreground/80">
               <strong>Important:</strong> Homes built before 1978 may contain lead-based paint.
-              Federal law requires that renovation, repair, and painting activities that
-              disturb lead paint in these homes follow lead-safe work practices.
+              EPA&apos;s Renovation, Repair and Painting Rule applies to covered work that
+              disturbs painted surfaces in pre-1978 homes and child-occupied facilities;
+              total demolition is treated differently. The exact scope matters.
             </p>
           </div>
         </div>
@@ -165,12 +167,12 @@ export default function LeadSafePage() {
                 {
                   step: "1",
                   title: "Assessment",
-                  text: "We evaluate the property and coordinate lead testing to identify all hazardous materials before work begins.",
+                  text: "We review the property, the material being disturbed, and available testing information, then coordinate additional testing when the scope requires it.",
                 },
                 {
                   step: "2",
                   title: "Containment",
-                  text: "Work areas are fully contained with plastic sheeting and barriers to prevent lead dust from spreading to clean areas.",
+                  text: "The containment plan is matched to the project so dust and debris can be kept away from unaffected areas.",
                 },
                 {
                   step: "3",
@@ -180,12 +182,12 @@ export default function LeadSafePage() {
                 {
                   step: "4",
                   title: "Cleanup & Verification",
-                  text: "Thorough cleanup with HEPA vacuums followed by verification that all surfaces meet clearance standards.",
+                  text: "Cleanup and any required verification are defined by the work type, applicable rule, and agreed project scope.",
                 },
                 {
                   step: "5",
                   title: "Proper Disposal",
-                  text: "All lead waste is packaged and transported to authorized disposal facilities in compliance with regulations.",
+                  text: "Waste handling and disposal are confirmed for the material and local requirements before debris leaves the site.",
                 },
               ].map((s) => (
                 <div key={s.step} className="flex items-start gap-4">
@@ -200,6 +202,40 @@ export default function LeadSafePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-y border-surface-dark bg-surface py-12 sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-primary-dark mb-3">
+            Lead-Safe Rules and Planning Sources
+          </h2>
+          <p className="text-foreground/70 leading-relaxed mb-5">
+            These primary EPA resources explain when the federal renovation rule
+            applies and why demolition work involving lead-based paint needs dust-control planning.
+          </p>
+          <ul className="space-y-3">
+            <li>
+              <a
+                href="https://www.epa.gov/lead/lead-renovation-repair-and-painting-program"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-primary underline decoration-accent underline-offset-4 hover:text-accent-dark"
+              >
+                EPA: Lead Renovation, Repair and Painting Program
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.epa.gov/large-scale-residential-demolition/lead-based-paint-and-demolition"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-primary underline decoration-accent underline-offset-4 hover:text-accent-dark"
+              >
+                EPA: Lead-Based Paint and Demolition
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 

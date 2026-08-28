@@ -22,11 +22,11 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kiddscleanup.com"),
   title: {
-    default: "Kansas City Demolition, Cleanouts & Junk Removal | Kidd's Clean Up and Demo",
-    template: "%s | Kidd's Clean Up and Demo",
+    default: "Kansas City Demolition & Junk Removal | Kidd's Cleanup",
+    template: "%s | Kidd's Cleanup",
   },
   description:
-    "Kidd's Clean Up and Demo provides residential and commercial demolition, junk removal, cleanouts, lead-safe work, and water mitigation across the Kansas City metro. Call for a free quote.",
+    "Kansas City demolition, junk removal, cleanouts, lead-safe work, and water mitigation from an owner-operated local crew. Request a free quote.",
   alternates: {
     canonical: "/",
   },

@@ -9,7 +9,7 @@ import { PRIORITY_CITY_LINKS, SERVICE_PAGE_FAQS } from "@/lib/local-seo";
 import { buildPageMetadata } from "@/lib/metadata";
 
 const pageTitle = "Residential Demolition Kansas City";
-const pageDescription = `Residential demolition in Kansas City for interior tear-outs, garage and shed removal, deck demo, concrete removal, home cleanouts, and debris haul-away. Call ${COMPANY.phone} for a free quote.`;
+const pageDescription = `Kansas City residential demolition for interior tear-outs, garages, sheds, decks, concrete, cleanouts, and debris haul-away. Call ${COMPANY.phone}.`;
 export const metadata = buildPageMetadata({
   title: pageTitle,
   description: pageDescription,

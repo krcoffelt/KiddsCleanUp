@@ -6,7 +6,7 @@ import { ANALYTICS_EVENTS, COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Learn about ${COMPANY.name}, a family-owned cleanup and demolition company serving the Kansas City metro since ${COMPANY.since}. Owner-operated with integrity and pride.`,
+  description: `Meet ${COMPANY.name}, an owner-operated Kansas City cleanup and demolition company serving the metro since ${COMPANY.since}.`,
   alternates: {
     canonical: "/about",
   },
@@ -22,7 +22,7 @@ export default function AboutPage() {
     <>
       <WebPageSchema
         title="About Kidd's Clean Up and Demo"
-        description={`Learn about ${COMPANY.name}, a family-owned cleanup and demolition company serving the Kansas City metro since ${COMPANY.since}. Owner-operated with integrity and pride.`}
+        description={`Meet ${COMPANY.name}, an owner-operated Kansas City cleanup and demolition company serving the metro since ${COMPANY.since}.`}
         path="/about"
       />
       <BreadcrumbSchema items={breadcrumbs} />
