@@ -72,7 +72,7 @@ export default function BlogIndexPage() {
       <section id="guides" className="scroll-mt-24 bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-3xl">
-            <p className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-accent-dark">Five local planning resources</p>
+            <p className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-accent-dark">Six local planning resources</p>
             <h2 className="mt-3 text-4xl font-bold leading-tight text-primary-dark sm:text-5xl">
               Start with the question in front of you.
             </h2>

@@ -26,6 +26,55 @@ const sharedDates = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "storm-debris-cleanup-kansas-city",
+    title: "Kansas City Storm Debris Cleanup: KCK Deadline and Disposal Options",
+    shortTitle: "Kansas City Storm Debris Cleanup Guide",
+    description:
+      "KCK storm debris guidance for the September 8 curb deadline, safe sorting, local disposal options, and professional Kansas City haul-away.",
+    eyebrow: "September 2026 Storm Update",
+    readTime: "8 min read",
+    published: "2026-09-03",
+    modified: "2026-09-03",
+    image: "/images/photo-4.jpg",
+    imageAlt: "Cleared Kansas City outdoor project area after debris removal",
+    imagePosition: "center 46%",
+    intro:
+      "Wyandotte County is still clearing debris after the damaging August storms. KCK residents have a September 8 curb deadline for separated vegetative debris, while roofing, fencing, lumber, masonry, metal, and household waste require a different plan.",
+    answer:
+      "Kansas City, Kansas residents should place eligible vegetative storm debris at the curb by September 8, 2026 and keep it separate from construction and household debris. Verify current Unified Government instructions before setting material out.",
+    sections: [
+      { id: "current-update", label: "September 8 KCK update" },
+      { id: "safety", label: "Safety before cleanup" },
+      { id: "sort", label: "How to separate debris" },
+      { id: "options", label: "Pickup and removal options" },
+      { id: "metro", label: "Other metro schedules" },
+      { id: "quote", label: "Prepare for a quote" },
+    ],
+    primaryService: { label: "Kansas City yard debris removal", href: "/services/yard-debris-removal" },
+    faq: [
+      {
+        question: "When is the KCK storm debris curb deadline?",
+        answer:
+          "The Unified Government's storm cleanup plan calls for eligible vegetative debris to be placed at the curb by September 8, 2026. Because emergency instructions can change, verify the latest guidance before setting material out.",
+      },
+      {
+        question: "Can branches and roofing debris go in the same pile?",
+        answer:
+          "No. Vegetative debris such as branches, limbs, and leaves should remain separate from roofing, lumber, fencing, masonry, metal, garbage, and other nonvegetative material.",
+      },
+      {
+        question: "What should I do if a branch is touching a power line?",
+        answer:
+          "Stay away and assume the line is energized. Kansas City BPU says to keep at least 35 feet away and call 911 or its 24-hour electric outage line at 913-573-9522. Do not trim or move the branch yourself.",
+      },
+      {
+        question: "Can Kidd's Clean Up haul storm debris?",
+        answer:
+          "Kidd's Clean Up can quote ground-level yard debris, damaged fencing, construction debris, and household contents within an agreed scope. Tree cutting, hanging limbs, utility hazards, and hazardous materials may require other qualified providers first.",
+      },
+    ],
+  },
+  {
     ...sharedDates,
     slug: "junk-removal-cost-kansas-city",
     title: "How Much Does Junk Removal Cost in Kansas City?",
@@ -269,4 +318,3 @@ export const BLOG_POST_SLUGS = BLOG_POSTS.map((post) => post.slug);
 export function getBlogPost(slug: string) {
   return BLOG_POSTS.find((post) => post.slug === slug);
 }
-

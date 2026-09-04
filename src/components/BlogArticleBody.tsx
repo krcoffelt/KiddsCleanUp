@@ -417,8 +417,105 @@ function FloodedBasement() {
   );
 }
 
+function StormDebrisCleanup() {
+  return (
+    <>
+      <Section id="current-update" number="01" title="KCK residents have a September 8 curb deadline">
+        <p>
+          Severe thunderstorms with damaging winds, hail, and heavy rain moved through eastern Kansas on August 18 and 19. Wyandotte County sustained enough damage that state personnel and equipment were deployed to assist with debris removal, according to the <a href="https://www.kansastag.gov/m/newsflash/Home/Detail/866" target="_blank" rel="noreferrer">Kansas Adjutant General&apos;s Department</a>.
+        </p>
+        <p>
+          Under the current Kansas City, Kansas storm waste plan, residents in affected areas should move eligible vegetative debris to the curb by <strong>September 8, 2026</strong>. The collection is intended for branches, limbs, leaves, and other organic yard debris that residents cannot reasonably take to the Recycling &amp; Yard Waste Center or place with regular service. The plan and extended center hours are summarized in the <a href="https://www.kctv5.com/2026/08/21/need-know-wyandotte-county-launches-emergency-storm-debris-cleanup-plan/" target="_blank" rel="noreferrer">local storm cleanup announcement</a>.
+        </p>
+        <Note title="Current as of September 3, 2026">
+          Emergency schedules and collection instructions can change. Confirm the latest Unified Government or Waste Management guidance for your address before moving material to the curb.
+        </Note>
+        <p>
+          The public pickup does not combine every kind of storm waste. Vegetation must remain separate from roofing, lumber, fencing, masonry, metal, garbage, and household contents. Material produced by a for-hire tree business may also fall outside the emergency collection. If you hire a contractor, confirm that haul-away is included in that contractor&apos;s scope.
+        </p>
+      </Section>
+
+      <Section id="safety" number="02" title="Make the property safe before sorting anything">
+        <p>
+          Storm debris can hide live wires, nails, broken glass, unstable fencing, sharp roofing, and damaged trees. Do not start by dragging everything into one pile. Walk the site only from a safe area and identify hazards that need utility, emergency, tree, or structural professionals first.
+        </p>
+        <p>
+          Kansas City&apos;s Board of Public Utilities says to treat every downed or sagging line as energized, stay at least 35 feet away, and call 911 or BPU at 913-573-9522. Its <a href="https://www.bpu.com/About/MediaNewsReleases/BeAwareofandSafeAroundDownedPowerLines.aspx" target="_blank" rel="noreferrer">downed-line safety guidance</a> also warns people not to touch anything in contact with a line or attempt a rescue themselves.
+        </p>
+        <Checklist>
+          <Check>Stay away from wires, utility poles, transformers, and anything touching them.</Check>
+          <Check>Do not work below cracked, hanging, or partially attached limbs.</Check>
+          <Check>Keep children, pets, and bystanders outside the work area.</Check>
+          <Check>Watch for gas odors, standing water, unstable walls, and damaged stairs or decks.</Check>
+          <Check>Wear appropriate footwear, gloves, eye protection, and other protection for the confirmed task.</Check>
+        </Checklist>
+        <p>
+          Kidd&apos;s Clean Up can quote ground-level debris after immediate hazards are controlled. Tree cutting, hanging-limb removal, utility work, and structural stabilization are not ordinary junk-removal tasks and may need qualified specialists first.
+        </p>
+      </Section>
+
+      <Section id="sort" number="03" title="Separate storm debris into practical material groups">
+        <p>
+          Separation matters because public programs, transfer facilities, composting sites, recyclers, and hauling crews may handle each material differently. Mixed piles can be refused or require a different disposal plan.
+        </p>
+        <Checklist>
+          <Check><strong>Vegetative:</strong> branches, limbs, leaves, brush, and other clean organic yard debris.</Check>
+          <Check><strong>Construction:</strong> roofing, drywall, lumber, decking, siding, insulation, masonry, and broken fixtures.</Check>
+          <Check><strong>Metal:</strong> gutters, flashing, fence panels, damaged outdoor equipment, and other recyclable metal.</Check>
+          <Check><strong>Household:</strong> furniture, mattresses, boxed belongings, ruined contents, and bagged trash.</Check>
+          <Check><strong>Special handling:</strong> fuel, paint, chemicals, batteries, propane cylinders, unknown liquids, and contaminated materials.</Check>
+        </Checklist>
+        <Note title="Do not create a hidden mixed pile">
+          Keep labels visible, leave unknown containers closed, and do not mix or pour liquids together. Photograph questionable material and disclose it before scheduling pickup.
+        </Note>
+      </Section>
+
+      <Section id="options" number="04" title="Choose municipal pickup, self-haul, or full-service removal">
+        <p>
+          Municipal storm pickup is the first option to check when your address is eligible, the material is accepted, the curb deadline is still open, and you can move it safely without hiring a business to generate the pile. Follow placement and separation rules exactly.
+        </p>
+        <p>
+          Self-haul can work when you have a suitable vehicle, safe lifting help, secure tie-downs, and a confirmed destination. The KCK Recycling &amp; Yard Waste Center has been operating extended hours as part of the response, but residents should verify the current schedule and accepted material before loading.
+        </p>
+        <p>
+          Full-service removal is useful when debris is inside the property, the materials do not qualify for public collection, construction and household debris need separate handling, or the property has an insurance, repair, sale, or contractor deadline. Kidd&apos;s Clean Up offers <Link href="/services/yard-debris-removal">yard debris removal</Link>, <Link href="/services/construction-debris-removal">construction debris removal</Link>, and broader <Link href="/services/junk-removal">junk removal across the Kansas City metro</Link>.
+        </p>
+      </Section>
+
+      <Section id="metro" number="05" title="Kansas City, Missouri has a different fall schedule">
+        <p>
+          The September 8 emergency deadline applies to the current KCK and Wyandotte County response—not to every community in the metro. Kansas City, Missouri publishes separate seasonal leaf-and-brush collection dates and drop-off rules.
+        </p>
+        <p>
+          KCMO&apos;s <a href="https://www.kcmo.gov/city-hall/trash/leaf-brush/-sortn-EName" target="_blank" rel="noreferrer">official 2026 leaf and brush schedule</a> currently lists first-round fall collection for South Kansas City on October 19–23, North Kansas City on October 26–30, and Central Kansas City on November 2–6. Second-round dates continue from November into December.
+        </p>
+        <p>
+          Overland Park, Olathe, Shawnee, Lenexa, Lee&apos;s Summit, Independence, Blue Springs, Leawood, Prairie Village, Mission, Raytown, Liberty, Belton, and Grandview may use different city programs or private haulers. Check the official page for the exact address instead of relying on a neighboring city&apos;s instructions.
+        </p>
+      </Section>
+
+      <Section id="quote" number="06" title="Send these details for a storm debris quote">
+        <Checklist>
+          <Check>The property address and any required completion date.</Check>
+          <Check>Wide photos showing every pile and where it sits on the property.</Check>
+          <Check>Close photos showing branches, roofing, fencing, household contents, or mixed material.</Check>
+          <Check>Approximate pile length, width, and height.</Check>
+          <Check>Driveway, gate, slope, parking, and loading access.</Check>
+          <Check>Any nearby wires, hanging limbs, standing water, sharp material, or unstable surfaces.</Check>
+          <Check>Whether a tree, roofing, repair, or insurance contractor is already involved.</Check>
+        </Checklist>
+        <p>
+          Do not approach a hazard just to take a better picture. Once the area is safe, send the clearest photos available through the <Link href="/contact">quote request</Link>. Kidd&apos;s Clean Up can define the removal and haul-away scope and identify anything that needs another qualified provider first.
+        </p>
+      </Section>
+    </>
+  );
+}
+
 export default function BlogArticleBody({ slug }: { slug: string }) {
   switch (slug) {
+    case "storm-debris-cleanup-kansas-city":
+      return <StormDebrisCleanup />;
     case "junk-removal-cost-kansas-city":
       return <JunkRemovalCost />;
     case "bulky-item-disposal-kansas-city":
@@ -433,4 +530,3 @@ export default function BlogArticleBody({ slug }: { slug: string }) {
       return null;
   }
 }
-
